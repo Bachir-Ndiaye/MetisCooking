@@ -50,7 +50,7 @@ Page models for mobile and desktop
 ```
 $ git clone https://github.com/Bachir-Ndiaye/MetissCooking/
 $ git remote add origin https://github.com/Bachir-Ndiaye/MetissCooking/ (note that you can replace "origin" by whatever you want, i.e "project-p2")
-$ git remote -v ( te see if the remote was added correctly)
+$ git remote -v ( to see if the remote was added correctly)
 
 ```
 ## Push your work ?
@@ -66,7 +66,7 @@ $ git push -u origin your_branch_name
 ## Update your work from distant repo ?
 
 ```
-$ git 
+$ git pull origin main (or master according to the name)
 
 ```
 One of the collaborators will validate your work if it's okay by comparing and pulling a request.
