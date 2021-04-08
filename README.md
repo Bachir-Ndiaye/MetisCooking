@@ -66,7 +66,7 @@ $ git push -u origin your_branch_name
 ## Update your work from distant repo ?
 
 ```
-$ git pull origin main (or master according to the name)
+$ git merge origin main (or master according to the name)
 
 ```
 One of the collaborators will validate your work if it's okay by comparing and pulling a request.
