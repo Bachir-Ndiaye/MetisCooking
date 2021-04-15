@@ -1,0 +1,117 @@
+:root {
+  --black: #0000;
+  --white: #ffff;
+  --dark-marron: #683e38;
+  --light-marron: #f9e6d0;
+  --dark-green: #006400;
+}
+
+* {
+  /* l'etoile (*) veut dire pas de marge, ni de bordure*/
+  margin: 0;
+  padding: 0;
+  font-family: "Lato Black";
+}
+
+p {
+    padding: 5px;
+}
+
+.page {
+    width: 100%;
+    background-color: rgb(146, 126, 126);
+  }
+
+.imgCourrier {
+    width: 330px;
+    position: absolute;
+    float: right-top;
+
+  }
+
+.container {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.Top_contact_left {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.Top_contact_right {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+}
+
+.container_left {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-self: flex-start;
+}
+
+.container_right {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  align-self: flex-end;
+}
+
+.container_right img {
+  width: 70%;
+}
+
+#contactForm {
+  padding: 20px;
+  width: 95%;
+  max-height: 800px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+    width: 100%;
+    height: 3em;
+    border-radius: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 8em;
+    border-radius: 10px;
+}
+
+form {
+  width: 70%;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.submit {
+    margin-top: 10px;
+    width: 100%;
+    height: 3em;
+    border-radius: 10px;
+    background-color: #006400;
+}
+
+/*
+input {
+  margin: auto;
+  padding: 50px;
+}
+
+label {
+  display: inline-block;
+  width: 400px;
+  
+}*/
