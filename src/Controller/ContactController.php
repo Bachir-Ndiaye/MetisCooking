@@ -6,7 +6,7 @@ use App\Model\ContactManager;
 
 class ContactController extends AbstractController
 {
-    public function formulaire() : string
+    public function formulaire(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $firstname = $_POST['firstname'];
@@ -15,7 +15,7 @@ class ContactController extends AbstractController
             $comment = $_POST['comment'];
 
             //ajout erreurs
-            $validate =true;
+            /*$validate =true;
             if(empty($_POST['firstname'])){
                 $erreur_firstname = "Veuillez indiquer votre prénom.";
                 $validate = false;
@@ -40,10 +40,9 @@ class ContactController extends AbstractController
             }elseif(strlen($_POST['comment']) < 5){
                 $erreur_comment = "Le message doit contenir plus de 5 caractères.";
                 $validate = false;
-            }
+            }*/
 
             // fin messages erreurs
-            
 
             $manager = new ContactManager();
             $manager->insert($firstname, $lastname, $email, $comment);
@@ -52,12 +51,12 @@ class ContactController extends AbstractController
         return $this->twig->render('Contact/form.html.twig');
     }
 
-    public function list() : string
+    public function list(): string
     {
         $contacts = (new ContactManager())->selectAll();
 
         /*
-        équivalent à 
+        équivalent à
         $manager = new ContactManager();
         $contacts = $manager->selectAll();*/
 
@@ -66,7 +65,7 @@ class ContactController extends AbstractController
         ]);
     }
 
-    public function delete(int $id) : void 
+    public function delete(int $id): void
     {
         $manager = new ContactManager();
         $manager->delete($id);
