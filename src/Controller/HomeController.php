@@ -10,7 +10,6 @@
 namespace App\Controller;
 
 use App\Model\HomeManager;
-use App\Model\ItemManager;
 
 class HomeController extends AbstractController
 {
