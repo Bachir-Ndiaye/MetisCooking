@@ -1,0 +1,14 @@
+:root{
+    --black : #000000;
+    --white : #FFFFFF;
+    --dark-marron : #683E38;
+    --light-marron : #F9E6D0;
+    --dark-green : #006400;
+    --red : #B22222;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Lato Black";
+}
