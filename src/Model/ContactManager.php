@@ -7,7 +7,7 @@ class ContactManager extends AbstractManager
 
     public const TABLE = 'users';
 
-    public function insert($firstname, $lastname, $email, $comment) : string
+    public function insert($firstname, $lastname, $email, $comment): string
     {
         $query = 'INSERT INTO users (firstname, lastname, email)
                     VALUES (:firstname, :lastname, :email);';
@@ -17,17 +17,16 @@ class ContactManager extends AbstractManager
         $statement->bindValue(':email', $email, \PDO::PARAM_STR);
 
         $statement->execute();
-        $user_id = $this->pdo->lastInsertId();
+        $userId = $this->pdo->lastInsertId();
 
         $queryComment = 'INSERT INTO comments (comment, user_id)
                         VALUES (:comment, :user_id);';
-         $statement = $this->pdo->prepare($queryComment); 
+         $statement = $this->pdo->prepare($queryComment);
          $statement->bindValue(':comment', $comment, \PDO::PARAM_STR);
-         $statement->bindValue(':user_id', $user_id, \PDO::PARAM_INT);   
-         
+         $statement->bindValue(':user_id', $userId, \PDO::PARAM_INT);
+
          $statement->execute();
 
         return $this->pdo->lastInsertId();
     }
-
 }
