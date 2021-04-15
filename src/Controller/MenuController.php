@@ -2,10 +2,7 @@
 
 namespace App\Controller;
 
-
 class MenuController extends AbstractController
-
-
 {
     public function index(): string
     {
@@ -18,6 +15,7 @@ class MenuController extends AbstractController
 
         return $this->twig->render('Menu/plats.html.twig');
     }
+
     public function entrees(): string
     {
 
@@ -29,5 +27,4 @@ class MenuController extends AbstractController
 
         return $this->twig->render('Menu/desserts.html.twig');
     }
-
 }
