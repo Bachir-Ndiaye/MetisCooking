@@ -1,0 +1,73 @@
+body {
+    background-color: ivory;
+}
+
+.header {
+    height: 200px;
+    border: solid 5px;
+    border-radius: 10px;
+}
+
+.footer {
+    height: 100px;
+    border: solid 5px;
+    border-radius: 10px;
+}
+
+.title_top_page {
+    border-radius: 10px;
+    align-items: center;
+    text-align: center;
+    background-color: #683e38;
+    color: #ffffff;
+}
+
+.menu_category {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.menu_entry {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.menu_plats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.title_recipe {
+    display: flex;
+}
+
+#title_recipe {
+    color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list_ingredients {
+    margin: 10px;
+    border: solid;
+    height: 300px;
+    width: 249px;
+}
+
+.paragraph_recipe {
+    margin: 10px;
+    padding: 10px;
+    border: solid;
+    height: 300px;
+    width: 500px;
+}
+
+.menu_Desserts {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

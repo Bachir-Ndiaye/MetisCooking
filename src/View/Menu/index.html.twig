@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+
+    {{ parent() }}Nos Menus
+{% endblock %}
+
+{% block stylesheet %}
+
+    <link rel="stylesheet" href="/assets/css/choix_menu.css">
+    
+{% endblock %}
+
+
+
+{% block content %}
+<h1 class="title_top_page">Nos Choix</h1>
+
+<div class="menu_category">
+
+    <div class="title_category">
+        <a href="/menu/entrees">
+            <img src="https://fakeimg.pl/250/ff0000,128/000,255" alt="Entrees">
+        </a>
+        <h3>Entrées</h3>
+    </div>
+
+    <div class="title_category">
+        <a href="/menu/plats">
+            <img src="https://fakeimg.pl/250/ff0000,128/000,255" alt="Plats">
+        </a>
+            <h3>Plats</h3>
+        
+    </div>
+    <div class="title_category">
+    <a href="/menu/desserts">
+        <img src="https://fakeimg.pl/250/ff0000,128/000,255" alt="Desserts">
+    </a>
+        <h3>Desserts</h3>
+    
+    </div>
+</div>
+{% endblock %}
