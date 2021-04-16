@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	Contact
+{% endblock %}
+
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/contact.css">
+{% endblock %}
+
+
+{% block content %}
+
+<div id="contact">
+    <h1>Nous contacter</h1>
+    <h2>Tous les jours de la semaine</h2>
+   
+    <form method="post" action="">
+		<input class="champ" type="text" name="firstname" placeholder="Votre prénom" /> <br />
+        <input class="champ" type="text" name="lastname" placeholder="Votre nom" /> <br />
+        <input class="champ" type="email" name="email" placeholder="Votre email" /> <br />
+        <textarea class="champ" name="comment" placeholder="Votre message"></textarea> <br />
+        <input class="bouton" type="submit" value="Envoyer votre message" />
+    </form>
+</div>
+
+{% endblock %}

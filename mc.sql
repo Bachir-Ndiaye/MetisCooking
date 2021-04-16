@@ -113,5 +113,3 @@ CREATE TABLE `newsletters` (
 
 SHOW TABLES;
 
-
-

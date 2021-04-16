@@ -1,0 +1,22 @@
+{% extends "layout.html.twig" %}
+
+
+{% block title %}Formulaire{% endblock %}
+
+{% block content %}
+
+    <a href="formulaire">Remplir le formulaire</a>
+
+    <h1>le formulaire</h1>
+
+    <ul>
+    
+        {% for contact in contacts %}
+            <li>Prénom : {{ contact.firstname }} | nom : {{ contact.lastname }} | email : {{ contact.email }} |
+            
+                    <a href="delete/{{ contact.id }}">Supprimer</a>
+            </li><br>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
