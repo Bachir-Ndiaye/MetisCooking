@@ -13,71 +13,17 @@
 
 {% block content %}
 
-	<div class="container">
-		<div class="Top_contact_left">
-			<h1>Contact </h1>
-			<p>Vous avez une question ou une demande ?
-								Envoyez nous un message à contact@metis_cooking.fr ou utilisez le formulaire ci-dessous.</p>
-			<br>
-			<p>Votre demande est urgente ?</p>
-			<p>Appelez-nous au 09 72 65 39 87</p>
-		</div>
-		<div class="Top_contact_right">
-			<h1>Ne faites pas attention à mon CSS</h1>
-			<img src="/assets/images/trop_bon.png">
-		</div>
-	</div>
-
-	<div class="container">
-		<img src="/assets/images/couscous.jpeg">
-	</div>
-
-	<div class="container">
-		<div class="container_left">
-
-			<p>Contact</p>
-			<form id="contactForm" action="formulaire" method="POST">
-
-				<div>
-					<label for="firstname">Prénom</label>
-					<input type="text" id="firstname" name="firstname" placeholder="Votre prénom">
-				</div>
-
-
-				<div>
-					<label for="lastname">Nom</label>
-					<input type="text" id="lastname" name="lastname" placeholder="Votre nom">
-				</div>
-
-
-				<div>
-					<label for="email">E-mail</label>
-					<input type="text" id="email" name="email" placeholder="Votre adresse mail">
-				</div>
-
-
-				<div>
-					<label for="comment">Message</label>
-					<textarea id="comment" type="text" name="comment" placeholder="Votre message"></textarea>
-				</div>
-
-
-				<div>
-					<input type="submit" value="Envoyer">
-				</div>
-
-			</form>
-
-		</div>
-
-		<div class="container_right">
-			<img src="/assets/images/nems.jpeg">
-		</div>
-
-	</div>
-
-	<div class="container">
-		<p>Tenez-vous au courant de nos actus!</p>
-	</div>
+<div id="contact">
+    <h1>Nous contacter</h1>
+    <h2>Tous les jours de la semaine</h2>
+   
+    <form method="post" action="">
+		<input class="champ" type="text" name="firstname" placeholder="Votre prénom" /> <br />
+        <input class="champ" type="text" name="lastname" placeholder="Votre nom" /> <br />
+        <input class="champ" type="email" name="email" placeholder="Votre email" /> <br />
+        <textarea class="champ" name="comment" placeholder="Votre message"></textarea> <br />
+        <input class="bouton" type="submit" value="Envoyer votre message" />
+    </form>
+</div>
 
 {% endblock %}
