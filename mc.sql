@@ -1,112 +1,117 @@
 ﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
 -- Link to schema: https://app.quickdatabasediagrams.com/#/d/Pge4Ue
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
-
--- Modify this code to update the DB schema diagram.
 -- To reset the sample schema, replace everything with
 -- two dots ('..' - without quotes).
 
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS Role, Categories, Allergene, Users, Dishes, Ingredients, Comments, CommandOrder, Ingredients_Dishes, Allergene_Dishes,Users_Dishes;
+DROP DATABASE IF EXISTS metiscooking;
+CREATE DATABASE metiscooking;
+USE metiscooking;
+DROP TABLE IF EXISTS role, categories, allergene, users, dishes, ingredients, comments, commandorder, ingredients_dishes, allergene_dishes,users_dishes,newsletters;
 SET FOREIGN_KEY_CHECKS = 1;
 
-CREATE TABLE `Role` (
+CREATE TABLE `role` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(100) 
+    `name` VARCHAR(255) 
 );
 
-CREATE TABLE `Categories` (
+CREATE TABLE `categories` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(100)
+    `name` VARCHAR(255)
 );
 
-CREATE TABLE `Allergene` (
+CREATE TABLE `allergene` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(100)
+    `name` VARCHAR(255)
 );
 
 
-CREATE TABLE `Users` (
+CREATE TABLE `users` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `Name` VARCHAR(100) ,
-    `Firstname` VARCHAR(100) ,
-    `Lastname` VARCHAR(100) ,
-    `Phone` VARCHAR(20) ,
-    `Email` VARCHAR(100) ,
-    `Adress` VARCHAR(100) ,
-    `PostalCode` VARCHAR(10) ,
-    `City` VARCHAR(100) ,
-    `Password` VARCHAR(100) ,
-    `RIB`  VARCHAR(100) ,
-    `PaymentMethod` VARCHAR(100) ,
-    `Role_id` int,
-    FOREIGN KEY (Role_id) REFERENCES Role(id)
+    `firstname` VARCHAR(255) ,
+    `lastname` VARCHAR(255) ,
+    `phone` VARCHAR(10) ,
+    `email` VARCHAR(100) ,
+    `adress` VARCHAR(100) ,
+    `postal_code` VARCHAR(10) ,
+    `city` VARCHAR(255) ,
+    `password` VARCHAR(255) ,
+    `rib`  VARCHAR(100) ,
+    `payment_method` VARCHAR(100) ,
+    `role_id` int,
+    FOREIGN KEY (role_id) REFERENCES role(id)
 );
 
-CREATE TABLE `Ingredients` (
+CREATE TABLE `ingredients` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `name`  VARCHAR(100) ,
-    `Category_id` int,
-    FOREIGN KEY (Category_id) REFERENCES Categories(id)
+    `category_id` int,
+    FOREIGN KEY (category_id) REFERENCES categories(id)
 );
 
 
-CREATE TABLE `Dishes` (
+CREATE TABLE `dishes` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(100) ,
-    `Price` int NOT NULL,
-    `Title` VARCHAR(100),
-    `Description` VARCHAR(200) ,
-    `Image` VARCHAR(100) ,
-    `CookingTime` DATE ,
-    `Ingredients_id` int ,
-    `Allergene_id` int ,
-    FOREIGN KEY (Ingredients_id) REFERENCES Ingredients(id),
-    FOREIGN KEY (Allergene_id) REFERENCES Allergene(id) 
+    `name` VARCHAR(255) ,
+    `price` int NOT NULL,
+    `title` VARCHAR(100),
+    `description` TEXT ,
+    `image` VARCHAR(100) ,
+    `cooking_time` DATETIME ,
+    `ingredients_id` int ,
+    `allergene_id` int ,
+    FOREIGN KEY (ingredients_id) REFERENCES ingredients(id),
+    FOREIGN KEY (allergene_id) REFERENCES allergene(id) 
 );
 
 
-CREATE TABLE `Comments` (
+CREATE TABLE `comments` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `Title` VARCHAR(100) ,
-    `Message` VARCHAR(100),
-    `PublishAt` DATE ,
-    `User_id` int ,
-    FOREIGN KEY (User_id) REFERENCES Users(id)
+    `title` VARCHAR(100) ,
+    `comment` TEXT,
+    `publish_at` DATETIME ,
+    `user_id` int ,
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-CREATE TABLE `CommandOrder` (
+CREATE TABLE `commandorder` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `Amount` int NOT NULL,
-    `CreatedAt` DATE ,
-    `User_id` int,
-    `Dish_id` int,
-    FOREIGN KEY (User_id) REFERENCES Users(id),
-    FOREIGN KEY (Dish_id) REFERENCES Dishes(id)
+    `amount` int NOT NULL,
+    `created_at` DATETIME ,
+    `user_id` int,
+    `dish_id` int,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (dish_id) REFERENCES dishes(id)
 );
 
-CREATE TABLE `Ingredients_Dishes` (
-    `Ingredient_id` int,
-    `Dish_id` int,
-    FOREIGN KEY (Ingredient_id) REFERENCES Ingredients(id),
-    FOREIGN KEY (Dish_id) REFERENCES Dishes(id)
+CREATE TABLE `ingredients_dishes` (
+    `ingredient_id` int,
+    `dish_id` int,
+    FOREIGN KEY (ingredient_id) REFERENCES ingredients(id),
+    FOREIGN KEY (dish_id) REFERENCES dishes(id)
 );
 
-CREATE TABLE `Allergene_Dishes` (
-    `Allergene_id` int,
-    `Dish_id` int,
-    FOREIGN KEY (Allergene_id) REFERENCES Allergene(id),
-    FOREIGN KEY (Dish_id) REFERENCES Dishes(id)
+CREATE TABLE `allergene_dishes` (
+    `allergene_id` int,
+    `dish_id` int,
+    FOREIGN KEY (allergene_id) REFERENCES allergene(id),
+    FOREIGN KEY (dish_id) REFERENCES dishes(id)
 );
 
-CREATE TABLE `Users_Dishes` (
-    `User_id` int,
-    `Dish_id`   int,
-    FOREIGN KEY (User_id) REFERENCES Users(id),
-    FOREIGN KEY (Dish_id) REFERENCES Dishes(id)
+CREATE TABLE `users_dishes` (
+    `user_id` int,
+    `dish_id`   int,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (dish_id) REFERENCES dishes(id)
 );
 
+CREATE TABLE `newsletters` (
+    `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `email` VARCHAR(100) 
+);
 
+SHOW TABLES;
 
 
 
