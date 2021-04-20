@@ -8,17 +8,39 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP DATABASE IF EXISTS metiscooking;
 CREATE DATABASE metiscooking;
 USE metiscooking;
-DROP TABLE IF EXISTS role, categories, allergene, users, dishes, ingredients, comments, commandorder, ingredients_dishes, allergene_dishes,users_dishes,newsletters;
+DROP TABLE IF EXISTS categories, role, entrees,plats,desserts, allergene, users, dishes, ingredients, comments, commandorder, ingredients_dishes, allergene_dishes,users_dishes,newsletters;
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+-- Create Tables
+CREATE TABLE `categories` (
+    `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(255)
+);
+
+CREATE TABLE `entrees` (
+    `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(255),
+    `category_id` int,
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+);
+
+CREATE TABLE `plats` (
+    `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(255),
+    `category_id` int,
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+);
+
+CREATE TABLE `desserts` (
+    `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(255)
+);
+
 
 CREATE TABLE `role` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(255) 
-);
-
-CREATE TABLE `categories` (
-    `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(255)
 );
 
 CREATE TABLE `allergene` (
@@ -111,5 +133,46 @@ CREATE TABLE `newsletters` (
     `email` VARCHAR(100) 
 );
 
-SHOW TABLES;
+-- Insert Data in Tables (jeu de données)
+INSERT INTO `categories` (`name`) VALUES ("entrees"),
+                                          ("plats"),
+                                          ("desserts");
 
+INSERT INTO `entrees` (`name`) VALUES ("Avocats thon"),
+                                      ("Crevettes"),
+                                      ("Rouleau d'été"),
+                                      ("Accra de morue"),
+                                      ("Houmouss"),
+                                      ("Salades"),
+                                      ("soupe misso"),
+                                      ("Crevettes"),
+                                      ("Fataya"),
+                                      ("Tartines chèvre");
+
+INSERT INTO `plats` (`name`) VALUES   ("Cassoulet"),
+                                      ("Poulet Tikka"),
+                                      ("Poulet Curry"),
+                                      ("Mafé"),
+                                      ("Yassa"),
+                                      ("Boudin entier"),
+                                      ("Couscous"),
+                                      ("Attiéké"),
+                                      ("Rougaille Porc"),
+                                      ("Tartiflette");
+
+INSERT INTO `desserts` (`name`) VALUES   ("tiramisu"),
+                                      ("Flambée banane"),
+                                      ("Tapioka coco"),
+                                      ("Glace aux choix"),
+                                      ("Moelleux chocolat"),
+                                      ("Tarte tatin"),
+                                      ("Yaourt nature"),
+                                      ("Muffins"),
+                                      ("Salades de fruits"),
+                                      ("Baba au rhum");
+
+-- Show tables
+SELECT * FROM `categories`;
+SELECT * FROM `entrees`;
+SELECT * FROM `plats`;
+SELECT * FROM `desserts`;

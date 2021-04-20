@@ -1,0 +1,58 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} Menu
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/home.css">
+{% endblock %}
+
+{% block content %}
+     <div class="main-menu">
+         <div class="back-menu">
+             <a href="/menu/cookers"><i class='fas fa-reply'></i></a>
+         </div>
+         <div class="singlemenu">
+
+             <!--Top 3 ideas -->
+             <div class="top-3">
+                 <div class="top-card">
+                     <img src="https://fakeimg.pl/150x150/">
+                     <p>Bio</p>
+                 </div>
+                 <div class="top-card">
+                     <img src="https://fakeimg.pl/150x150/">
+                     <p>Temps de cuisson</p>
+                 </div>
+                 <div class="top-card">
+                     <img src="https://fakeimg.pl/150x150/">
+                     <p>Temps</p>
+                 </div>
+             </div>
+
+             <!--EPD details-->
+             <div class="epd">
+                 <div class="box-category">
+                     <h1>{{ entrees[ random(0,9) ].name }}</h1>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor illo laudantium natus nostrum omnis quaerat, velit voluptas! Ducimus, eius esse, fuga illum inventore iure, laborum minima modi nihil quasi quo?</p>
+                 </div>
+                 <div class="box-category">
+                     <h1>{{ plats[ random(0,9) ].name }}</h1>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor illo laudantium natus nostrum omnis quaerat, velit voluptas! Ducimus, eius esse, fuga illum inventore iure, laborum minima modi nihil quasi quo?</p>
+                 </div>
+                 <div class="box-category">
+                     <h1>{{ desserts[ random(0,9) ].name }}</h1>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor illo laudantium natus nostrum omnis quaerat, velit voluptas! Ducimus, eius esse, fuga illum inventore iure, laborum minima modi nihil quasi quo?</p>
+                 </div>
+             </div>
+
+         </div>
+         <div class="order">
+             <div class="number-order">
+                 <p><span id="minus">-</span> 0 <span id="plus">+</span> </p>
+                 <p id="this-menu">Commandez ce menu</p>
+             </div>
+         </div>
+     </div>
+{% endblock %}

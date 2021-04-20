@@ -69,7 +69,6 @@ class HomeController extends AbstractController
         $success = [];
         $postalCodePattern = '/^([0-9]{5})$/';
 
-
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (isset($_POST['submit'])) {
                 $this->handlePostEmail($errors, $success, $_POST['email']);

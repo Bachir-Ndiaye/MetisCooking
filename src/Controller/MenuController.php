@@ -2,29 +2,65 @@
 
 namespace App\Controller;
 
+use App\Model\AbstractManager;
+use App\Model\DessertsManager;
+use App\Model\EntreeManager;
+use App\Model\MenuManager;
+use App\Model\PlatsManager;
+
 class MenuController extends AbstractController
 {
-    public function index(): string
-    {
 
-        return $this->twig->render('Menu/index.html.twig');
+    public function cookers(): string
+    {
+        /**
+        * Get all data from entrees table
+         */
+        $entreesManager = new EntreeManager();
+        $entrees = $entreesManager->selectAll('name');
+
+        /**
+         * Get all data from plats table
+         */
+        $platsManager = new PlatsManager();
+        $plats = $platsManager->selectAll('name');
+
+        /**
+         * Get all data from desserts table
+         */
+        $dessertsManager = new DessertsManager();
+        $desserts = $dessertsManager->selectAll('name');
+
+        return $this->twig->render('Menu/index.html.twig', [
+            'entrees' => $entrees,
+            'plats' => $plats,
+            'desserts' => $desserts
+        ]);
     }
 
-    public function plats(): string
+    public function singlemenu(): string
     {
+        /**
+         * Get all data from entrees table
+         */
+        $entreesManager = new EntreeManager();
+        $entrees = $entreesManager->selectAll('name');
 
-        return $this->twig->render('Menu/plats.html.twig');
-    }
+        /**
+         * Get all data from plats table
+         */
+        $platsManager = new PlatsManager();
+        $plats = $platsManager->selectAll('name');
 
-    public function entrees(): string
-    {
-
-        return $this->twig->render('Menu/entrees.html.twig');
-    }
-
-    public function desserts(): string
-    {
-
-        return $this->twig->render('Menu/desserts.html.twig');
+        /**
+         * Get all data from desserts table
+         */
+        $dessertsManager = new DessertsManager();
+        $desserts = $dessertsManager->selectAll('name');
+        return $this->twig->render('Menu/singlemenu.html.twig', [
+            'entrees' => $entrees,
+            'plats' => $plats,
+            'desserts' => $desserts
+        ]);
     }
 }

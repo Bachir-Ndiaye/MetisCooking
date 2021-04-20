@@ -6,9 +6,8 @@
 {% endblock %}
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/home.css">{% endblock %}
 
-{% block content %}
 
-    <!--Header Said-->
+{% block content %}
 
     <!--Display messages when user enters email address-->
     <div class="box-msg">
@@ -32,7 +31,7 @@
     <div class="h-head-img">
         <img src="/assets/images/home-hero-img.jpg" alt="Home Header Image">
         <!--Menu buttom-->
-        <a id="see-menu" href="#">Voir nos menus</a>
+        <a id="see-menu" href="/menu/cookers/">Voir nos menus</a>
     </div>
 
     <!--Post Header Text-->
@@ -93,7 +92,7 @@
 
     <!--Make a command button-->
     <div class="command">
-        <a href="#">Commandez !</a>
+        <a href="/menu/cookers">Commandez !</a>
     </div>
 
     <!--4 rules-->
@@ -138,3 +137,4 @@
 
 
 {% endblock %}
+
