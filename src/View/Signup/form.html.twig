@@ -2,7 +2,7 @@
 
 {% block title %}
 	{{ parent() }}
-	Contact
+	Signup
 {% endblock %}
 
 
@@ -12,7 +12,7 @@
 
 
 {% block content %}
-<div class="contact_page">
+<div class="signup_page">
 	<div class="box-msg">
 		{% if errors != NULL %}
 			{% for error in errors %}
@@ -24,22 +24,19 @@
 	</div>
 
 	<div id="contact">
-		<h1>Nous contacter</h1>
+		<h1>Formulaire d'inscription</h1>
 
-		<form method="post" action="/Contact/formulaire">
+		<form method="post" action="/Signup/signup">
 			<input class="champ" type="text" name="firstname" placeholder="Votre prénom"/>
 			<br/>
 			<input class="champ" type="text" name="lastname" placeholder="Votre nom"/>
 			<br/>
 			<input class="champ" type="email" name="email" placeholder="Votre email"/>
 			<br/>
-			<textarea class="champ" name="comment" placeholder="Votre message"></textarea>
+			<input class="champ" type="password" name="password" placeholder="Votre mot de passe"/>
 			<br/>
-			<input class="bouton" type="submit" value="Envoyer votre message"/>
+			<input class="bouton" type="submit" value="Enregistrer"/>
 		</form>
 	</div>
 </div>
 {% endblock %}
-
-
-

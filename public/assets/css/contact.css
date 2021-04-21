@@ -13,63 +13,120 @@
   font-family: "Lato Black";
 }
 
-body {
-margin: 0;
-padding:0;
-background-image: url(/assets/images/plat2.jpg);
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-background-attachment: fixed;
+.contact_page {
+  margin: 0;
+  padding: 0;
+  background-image: url(/assets/images/plat2.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 1000px;
+}
+.login_page {
+  margin: 0;
+  padding: 0;
+  background-image: url(/assets/images/plat3.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 1000px;
+}
+.signup_page {
+  margin: 0;
+  padding: 0;
+  background-image: url(/assets/images/plat1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 1000px;
 }
 #contact {
-width: 500px;
-margin: auto;
-margin-top: 100px;
-text-align: center;
-color: #fff;
-text-transform: uppercase;
-letter-spacing: 2px;
+  width: 500px;
+  margin: auto;
+  margin-top: 100px;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: #fff;
+  border-radius: 20px;
 }
-#contact h1 { 
-font-size: 32px;
+#contact h1 {
+  font-size: 25px;
+  color: rgb(31, 29, 29);
+  padding-top: 20px;
 }
-#contact h2 { 
-font-size: 20px;
+.connexion {
+  padding-top: 40px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #000;  
+}
+.connexion ul{
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  margin: auto;
+}
+.connexion ul li a{
+  text-decoration: none;
+  color: #000;
 }
 form {
-margin-top: 30px;
+  margin-top: 30px;
 }
 .champ {
-width: 100%;
-background: transparent;/*background-color: rgba(104, 62, 56, 0);*/  
-border: none;
-outline: none;
-border-bottom: 1px solid #ccc;
-font-size: 17px;
-margin-bottom: 15px;
-height: 45px;
-color: #fff;
+  width: 90%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 17px;
+  margin-bottom: 15px;
+  height: 45px;
+  color: #000;
   font-weight: bold;
+  border-radius: 10px;
+  padding: 0 10px;
 }
 .bouton {
-width: 100%;
-margin-top: 15px;
-background: #F90;
-border-color: transparent;
-color: #fff;
-font-size: 21px;
-font-weight: bold;
-height: 45px;
+  width: 100%;
+  margin-top: 15px;
+  background: #f90;
+  border-color: transparent;
+  color: #fff;
+  font-size: 21px;
+  font-weight: bold;
+  height: 45px;
+  border-radius: 0 0 20px 20px;
 }
 .bouton:hover {
-background: #F60;
-cursor: pointer;
+  background: #f60;
+  cursor: pointer;
 }
 
+.box-msg {
+  display: grid;
+}
+.box-msg .success {
+  background-color: var(--dark-green);
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+  color: var(--white);
+}
+.box-msg .alert {
+  background-color: var(--red);
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+  color: var(--white);
+}
 
 @media screen and (max-width: 499px) {
-#contact {
-width: 90%;
-}
+  #contact {
+    width: 90%;
+  }
 }

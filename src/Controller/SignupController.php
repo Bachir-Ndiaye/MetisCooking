@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-use App\Model\ContactManager;
+use App\Model\SignupManager;
 
-class ContactController extends AbstractController
+class SignupController extends AbstractController
 {
-    public function formulaire(): string
+    public function signup(): string
     {
         $errors = [];
 
@@ -17,36 +17,32 @@ class ContactController extends AbstractController
             if (empty($_POST['lastname'])) {
                 $errors[] = "Veuillez indiquer votre nom.";
             }
-
             if (empty($_POST['email'])) {
                 $errors[] = "Veuillez indiquer votre email .";
             } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                 $errors[] = "Adresse Email non valide";
             }
-
-            if (empty($_POST['comment'])) {
-                $errors[] = "Veuillez entrer votre message";
-            } elseif (strlen($_POST['comment']) < 5) {
-                $errors[] = "Le message doit contenir plus de 5 caractères .";
+            if (empty($_POST['password'])) {
+                $errors[] = "Veuillez indiquer votre mot de passe.";
             }
 
             if (empty($errors)) {
-                $success = "Votre message a bien été pris en compte. Nous reviendrons vers vous dans les brefs délais.";
+                $success = " Vous êtes bien enregistré!";
                 $data = array_map('trim', $_POST);
                 $firstname =  htmlentities($data['firstname']);
                 $lastname = htmlentities($data['lastname']);
                 $email = htmlentities($data['email']);
-                $comment = htmlentities($data['comment']);
+                $password = htmlentities($data['password']);
 
-                $contactManager = new ContactManager();
-                $contactManager->insert($firstname, $lastname, $email, $comment);
+                $signupManager = new SignupManager();
+                $signupManager->insert($firstname, $lastname, $email, $password);
                 return $this->twig->render('Home/index.html.twig', [
                     'success' => $success
                 ]);
             }
         }
 
-        return $this->twig->render('Contact/form.html.twig', [
+        return $this->twig->render('Signup/form.html.twig', [
             'errors' => $errors
         ]);
     }

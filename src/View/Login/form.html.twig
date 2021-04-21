@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	Login
+{% endblock %}
+
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/contact.css">
+{% endblock %}
+
+
+{% block content %}
+	<div class="login_page">
+		<div class="box-msg">
+			{% if errors != NULL %}
+				{% for error in errors %}
+					<div class="alert">
+						<p>{{ error }}</p>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+
+		<div id="contact">
+			<h1>Connectez-vous</h1>
+
+			<form method="post" action="/Login/login">
+				<input class="champ" type="email" name="email" placeholder="Votre email"/>
+				<br/>
+				<input class="champ" type="password" name="password" placeholder="Votre mot de passe"/>
+				<br/>
+				<div class="connexion">
+					<ul>
+						<li><a href="#">Mot de passe oublié ?</a></li>
+						<li><a href="/Signup/signup">Pas encore enregistré ?</a></li>
+					</ul>
+				</div>
+				<input class="bouton" type="submit" value="Connexion"/>
+			</form>
+		</div>
+	</div>
+{% endblock %}
