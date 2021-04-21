@@ -148,7 +148,6 @@
 =================*/
 .card-cooker {
   text-align: center;
-  padding: 1rem;
   margin-bottom: 1.5rem; }
   .card-cooker img {
     width: 100%;
@@ -160,7 +159,7 @@
     justify-content: center; }
     .card-cooker .card-menu .details-menu a {
       text-decoration: none; }
-    .card-cooker .card-menu .details-menu #panier {
+    .card-cooker .card-menu .details-menu #paniers {
       color: red; }
     .card-cooker .card-menu .details-menu p {
       font-size: small;
@@ -217,50 +216,52 @@
 /*=================
   SINGLE MENU
 =================*/
-.main-menu .back-menu {
-  position: sticky;
-  top: 0;
-  right: 0; }
-  .main-menu .back-menu .fas {
-    font-size: x-large;
-    padding: 1rem;
-    border-radius: 50%;
-    background-color: var(--light-marron);
-    color: var(--black); }
-.main-menu .order .number-order {
-  display: flex;
-  justify-content: end;
-  padding-top: 6rem;
-  width: 80%;
-  margin: auto; }
-  .main-menu .order .number-order p:nth-child(1) {
-    border: 1px solid var(--black);
-    padding: .25rem .85rem;
-    margin-right: 1rem; }
-  .main-menu .order .number-order #this-menu {
-    background-color: var(--black);
-    color: var(--white);
-    padding: .25rem .85rem; }
-.main-menu .top-3 {
-  text-align: center; }
-  .main-menu .top-3 .top-card {
-    display: inline-block;
-    max-width: 200px;
-    max-height: 350px;
-    padding: 0 2rem; }
-    .main-menu .top-3 .top-card img {
-      height: 150px;
-      width: 150px;
-      object-fit: cover;
-      border-radius: 50%; }
-.main-menu .epd {
-  text-align: center; }
-  .main-menu .epd .box-category {
-    max-width: 250px;
-    max-height: 350px;
-    margin: auto;
-    text-align: center;
-    display: inline-block;
-    padding: 2rem 0; }
+.main-menu {
+  padding: 15rem 0 5rem 0; }
+  .main-menu .back-menu {
+    position: sticky;
+    top: 0;
+    right: 0; }
+    .main-menu .back-menu .fas {
+      font-size: x-large;
+      padding: 1rem;
+      border-radius: 50%;
+      background-color: var(--light-marron);
+      color: var(--black); }
+  .main-menu .order .number-order {
+    display: flex;
+    justify-content: end;
+    padding-top: 6rem;
+    width: 80%;
+    margin: auto; }
+    .main-menu .order .number-order p:nth-child(1) {
+      border: 1px solid var(--black);
+      padding: .25rem .85rem;
+      margin-right: 1rem; }
+    .main-menu .order .number-order #this-menu {
+      background-color: var(--black);
+      color: var(--white);
+      padding: .25rem .85rem; }
+  .main-menu .top-3 {
+    text-align: center; }
+    .main-menu .top-3 .top-card {
+      display: inline-block;
+      max-width: 200px;
+      max-height: 350px;
+      padding: 0 2rem; }
+      .main-menu .top-3 .top-card img {
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+        border-radius: 50%; }
+  .main-menu .epd {
+    text-align: center; }
+    .main-menu .epd .box-category {
+      max-width: 250px;
+      max-height: 350px;
+      margin: auto;
+      text-align: center;
+      display: inline-block;
+      padding: 2rem 0; }
 
-/*# sourceMappingURL=home.css.map */
+/*# sourceMappingURL=_home.css.map */

@@ -1,0 +1,99 @@
+.main-header{
+    width: auto;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: var(--white);
+    z-index:10;
+}
+
+.logo img{
+    height: 100px;
+    width: auto;
+   
+}
+
+.nav-links, .connect-btn, .logo{
+    margin: auto;
+}
+
+.nav-links a, .connect-btn a {
+    text-decoration: none;
+}
+.nav-links ul li{
+    list-style: none;
+}
+.item-nav a{
+    color: var(--black);
+    font-size: x-large;
+    padding: 0 1rem;
+}
+.item-nav{
+    padding: 1.5rem 0;
+}
+.liste-nav.active{
+    margin-top: 3.9rem;
+    height: 100vh;
+    display: block;
+    align-items:center;
+    justify-content: center;
+    left:0;
+    text-align: center;
+    background-color: var(--white); 
+}
+.liste-nav{
+    justify-content: center;
+    z-index:1;
+    display: inline-flex;
+    list-style-type: none;
+   
+}
+
+.nav-links .logo-menu{
+    height: 40px;
+}
+.logo-menu{
+    display: none;
+}
+
+
+.btn{
+    padding: .5rem 1rem;
+    border-radius: 20px;
+    margin: 0 .5rem;
+}
+#panier{
+    background-color: var(--black);
+    color: var(--white);
+}
+#login{
+    background-color: var(--dark-marron);
+    color: var(--white);
+}
+.connect-btn{
+    display: flex;
+}
+.connect-btn a{
+    font-size: small;
+}
+.box-msg{
+    padding-top:150px;
+}
+
+/*=====MQ==========*/
+@media screen and (max-width: 1100px){
+    .logo-menu{ 
+        display:flex;
+    }
+    .liste-nav{
+        position:fixed;
+        width: 100%;
+        display:none;
+        flex-direction: column;
+    }
+}
