@@ -8,40 +8,17 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP DATABASE IF EXISTS metiscooking;
 CREATE DATABASE metiscooking;
 USE metiscooking;
-DROP TABLE IF EXISTS categories, role, entrees,plats,desserts, allergene, users, dishes, ingredients, comments, commandorder, ingredients_dishes, allergene_dishes,users_dishes,newsletters;
+DROP TABLE IF EXISTS menus, role, cookers, allergene, users, dishes, ingredients, comments, commandorder, ingredients_dishes, allergene_dishes,users_dishes,newsletters;
 SET FOREIGN_KEY_CHECKS = 1;
 
 
 -- Create Tables
-CREATE TABLE `categories` (
-    `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(255)
-);
-
-CREATE TABLE `entrees` (
-    `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(255),
-    `category_id` int,
-    FOREIGN KEY (category_id) REFERENCES categories(id)
-);
-
-CREATE TABLE `plats` (
-    `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(255),
-    `category_id` int,
-    FOREIGN KEY (category_id) REFERENCES categories(id)
-);
-
-CREATE TABLE `desserts` (
-    `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(255)
-);
-
-
 CREATE TABLE `role` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(255) 
 );
+
+
 
 CREATE TABLE `allergene` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -54,43 +31,58 @@ CREATE TABLE `users` (
     `firstname` VARCHAR(255) ,
     `lastname` VARCHAR(255) ,
     `phone` VARCHAR(10) ,
-    `email` VARCHAR(100) ,
-    `adress` VARCHAR(100) ,
+    `email` VARCHAR(255) ,
+    `adress` VARCHAR(255) ,
     `postal_code` VARCHAR(10) ,
     `city` VARCHAR(255) ,
     `password` VARCHAR(255) ,
-    `rib`  VARCHAR(100) ,
-    `payment_method` VARCHAR(100) ,
+    `rib`  VARCHAR(255) ,
+    `payment_method` VARCHAR(255) ,
     `role_id` int,
     FOREIGN KEY (role_id) REFERENCES role(id)
 );
 
 CREATE TABLE `ingredients` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name`  VARCHAR(100) ,
-    `category_id` int,
-    FOREIGN KEY (category_id) REFERENCES categories(id)
+    `name`  VARCHAR(255) ,
+    `dishe_id` int
+);
+CREATE TABLE `dishes` (
+    `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `type` VARCHAR(255) ,
+    `name` VARCHAR(255),
+    `description` TEXT ,
+    `image_link` VARCHAR(255) ,
+    `cooking_time` DATETIME ,
+    `allergene_id` int ,
+    FOREIGN KEY (allergene_id) REFERENCES allergene(id) 
+);
+
+CREATE TABLE `cookers` (
+    `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `name`  VARCHAR(255)
 );
 
 
-CREATE TABLE `dishes` (
+CREATE TABLE `menus` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(255) ,
+    `name` VARCHAR(255),
+    `country` VARCHAR(255),
     `price` int NOT NULL,
-    `title` VARCHAR(100),
-    `description` TEXT ,
-    `image` VARCHAR(100) ,
-    `cooking_time` DATETIME ,
-    `ingredients_id` int ,
-    `allergene_id` int ,
-    FOREIGN KEY (ingredients_id) REFERENCES ingredients(id),
-    FOREIGN KEY (allergene_id) REFERENCES allergene(id) 
+    `entree_id` int,
+    `plat_id` int,
+    `dessert_id` int,
+    `cooker_id` int,
+    FOREIGN KEY (entree_id) REFERENCES dishes(id),
+    FOREIGN KEY (plat_id) REFERENCES dishes(id),
+    FOREIGN KEY (dessert_id) REFERENCES dishes(id),
+    FOREIGN KEY (cooker_id) REFERENCES cookers(id) 
 );
 
 
 CREATE TABLE `comments` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `title` VARCHAR(100) ,
+    `title` VARCHAR(255) ,
     `comment` TEXT,
     `publish_at` DATETIME ,
     `user_id` int ,
@@ -130,49 +122,70 @@ CREATE TABLE `users_dishes` (
 
 CREATE TABLE `newsletters` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `email` VARCHAR(100) 
+    `email` VARCHAR(255) 
 );
 
 -- Insert Data in Tables (jeu de données)
-INSERT INTO `categories` (`name`) VALUES ("entrees"),
-                                          ("plats"),
-                                          ("desserts");
+INSERT INTO `cookers` (`name`) VALUES ("Paul Bocuse"),
+                                      ("Jean Dupont"),
+                                      ("Mamadou Sackho"),
+                                      ("Etienne Mbappé"),
+                                      ("Charles Dibango"),
+                                      ("Emmanuel LeNoir"),
+                                      ("Gilbert LeBlanc"),
+                                      ("Anta Coulibaly"),
+                                      ("Fatoumata Cissé"),
+                                      ("Said Marzougui");
 
-INSERT INTO `entrees` (`name`) VALUES ("Avocats thon"),
-                                      ("Crevettes"),
-                                      ("Rouleau d'été"),
-                                      ("Accra de morue"),
-                                      ("Houmouss"),
-                                      ("Salades"),
-                                      ("soupe misso"),
-                                      ("Crevettes"),
-                                      ("Fataya"),
-                                      ("Tartines chèvre");
 
-INSERT INTO `plats` (`name`) VALUES   ("Cassoulet"),
-                                      ("Poulet Tikka"),
-                                      ("Poulet Curry"),
-                                      ("Mafé"),
-                                      ("Yassa"),
-                                      ("Boudin entier"),
-                                      ("Couscous"),
-                                      ("Attiéké"),
-                                      ("Rougaille Porc"),
-                                      ("Tartiflette");
+-- [1-10] => plat
+-- [11-20] => dessert
+-- [21-30] => entree
+INSERT INTO `dishes` (`type`,`name`,`image_link` ) VALUES           ("plat", "Cassoulet", "cassoulet"),
+                                                                    ("plat","Poulet Tikka", "tikka"),
+                                                                    ("plat","Poulet Curry", "curry"),
+                                                                    ("plat","Mafé", "mafe"),
+                                                                    ("plat","Yassa", "yassa"),
+                                                                    ("plat","Bolognaise", "bolognaise"),
+                                                                    ("plat","Couscous", "couscous"),
+                                                                    ("plat","Attiéké", "attieke"),
+                                                                    ("plat","Hamburger", "hamburger"),
+                                                                    ("plat","Kebab Premium", "kebab"),
+                                                                    ("dessert","Tiramisu","tiramisu"),
+                                                                    ("dessert","Flambée banane","banane"),
+                                                                    ("dessert","Tapioka coco","coco"),
+                                                                    ("dessert","Glace aux choix", "glace"),
+                                                                    ("dessert","Moelleux chocolat","moelleux"),
+                                                                    ("dessert","Tarte tatin","tatin"),
+                                                                    ("dessert","Yaourt nature", "yaourt"),
+                                                                    ("dessert","Muffins", "muffins"),
+                                                                    ("dessert","Salades de fruits", "fruits"),
+                                                                    ("dessert","Baba au rhum", "rhum"),
+                                                                    ("entree","Avocats thon", "avocats"),
+                                                                    ("entree","Crevettes", "crevettes"),
+                                                                    ("entree","Rouleau d'été", "rouleau"),
+                                                                    ("entree","Accra de morue", "accra"),
+                                                                    ("entree","Houmouss", "houmouss"),
+                                                                    ("entree","Salades", "salades"),
+                                                                    ("entree","soupe misso", "misso"),
+                                                                    ("entree","Crevettes huile", "huile"),
+                                                                    ("entree","Fataya", "fataya"),
+                                                                    ("entree","Tartines chèvre", "chevre");
 
-INSERT INTO `desserts` (`name`) VALUES   ("tiramisu"),
-                                      ("Flambée banane"),
-                                      ("Tapioka coco"),
-                                      ("Glace aux choix"),
-                                      ("Moelleux chocolat"),
-                                      ("Tarte tatin"),
-                                      ("Yaourt nature"),
-                                      ("Muffins"),
-                                      ("Salades de fruits"),
-                                      ("Baba au rhum");
+INSERT INTO `menus` (`name`,`country`,`price`,`entree_id`,`plat_id`,`dessert_id`,`cooker_id`) VALUES      ("Menu Yassa", "sn", "25","21","5","11","3"),
+                                                                                                          ("Menu Mafé", "ml", "15","22","4","12","4"),
+                                                                                                          ("Menu Couscous", "ma", "25","23","7","13","2"),
+                                                                                                          ("Menu Attiéké", "ci", "20","24","8","14","5"),
+                                                                                                          ("Menu Hamburger", "us", "12","25","9","15","1"),
+                                                                                                          ("Menu Kebab", "tr", "9","26","10","16","5"),
+                                                                                                          ("Menu Poulet Curry", "gh", "17","27","3","17","6"),
+                                                                                                          ("Menu Cassoulet", "fr", "19","28","1","18","7"),
+                                                                                                          ("Menu Bolognaise", "it", "15","29","6","19","8"),
+                                                                                                          ("Menu Pasta", "it", "23","30","6","20","9");
+
+
 
 -- Show tables
-SELECT * FROM `categories`;
-SELECT * FROM `entrees`;
-SELECT * FROM `plats`;
-SELECT * FROM `desserts`;
+SELECT * FROM `cookers`;
+SELECT * FROM `menus`;
+SELECT * FROM `dishes`;

@@ -160,12 +160,16 @@
     justify-content: center; }
     .card-cooker .card-menu .details-menu a {
       text-decoration: none; }
-    .card-cooker .card-menu .details-menu #flags {
-      padding: 0 .5rem; }
+    .card-cooker .card-menu .details-menu #panier {
+      color: red; }
     .card-cooker .card-menu .details-menu p {
       font-size: small;
       padding-right: .3rem;
       margin-bottom: .5rem; }
+      .card-cooker .card-menu .details-menu p img {
+        height: 15px;
+        width: 25px;
+        padding-left: .5rem; }
     .card-cooker .card-menu .details-menu p:nth-child(1) {
       background-color: var(--light-marron);
       padding: 0rem .5rem;
@@ -174,13 +178,7 @@
     position: relative;
     display: flex;
     justify-content: space-around;
-    padding: 2rem 0 6rem 0;
-    border-bottom: 1px dashed; }
-    .card-cooker .card-menu .menu p {
-      position: absolute;
-      bottom: 5%;
-      right: 4.5%;
-      color: red; }
+    padding: 2rem 0 6rem 0; }
     .card-cooker .card-menu .menu .menu-wrap {
       position: relative;
       width: min-content;
@@ -197,7 +195,8 @@
         left: 0;
         right: 0;
         color: black;
-        padding-top: 2rem; }
+        padding-top: 2rem;
+        font-size: large; }
 
 /*=================
   NOS MENUS - MQ

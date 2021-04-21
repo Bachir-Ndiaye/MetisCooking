@@ -3,10 +3,9 @@
 namespace App\Controller;
 
 use App\Model\AbstractManager;
-use App\Model\DessertsManager;
-use App\Model\EntreeManager;
+use App\Model\CookersManager;
+use App\Model\DishManager;
 use App\Model\MenuManager;
-use App\Model\PlatsManager;
 
 class MenuController extends AbstractController
 {
@@ -14,53 +13,45 @@ class MenuController extends AbstractController
     public function cookers(): string
     {
         /**
-        * Get all data from entrees table
+         * Get all data from dishes table
          */
-        $entreesManager = new EntreeManager();
-        $entrees = $entreesManager->selectAll('name');
+        $dishManager = new DishManager();
+        $entree = 'entree_id';
+        $plat = 'plat_id';
+        $dessert = 'dessert_id';
+
+        $dishes = $dishManager->selectAll();
+
+        $entrees = $dishManager->selectDish($entree);
+        $plats = $dishManager->selectDish($plat);
+        $desserts = $dishManager->selectDish($dessert);
 
         /**
-         * Get all data from plats table
+         * Get all data from cookers table
          */
-        $platsManager = new PlatsManager();
-        $plats = $platsManager->selectAll('name');
+        $cookerManager = new CookersManager();
+        $cookers = $cookerManager->selectAll();
 
         /**
-         * Get all data from desserts table
+         * Get all data from menus table
          */
-        $dessertsManager = new DessertsManager();
-        $desserts = $dessertsManager->selectAll('name');
+        $menuManager = new MenuManager();
+        $menus = $menuManager->selectAll();
 
         return $this->twig->render('Menu/index.html.twig', [
-            'entrees' => $entrees,
-            'plats' => $plats,
-            'desserts' => $desserts
+         'dish' => $dishes,
+         'cooker' => $cookers,
+         'menu' => $menus,
+         'entrees' => $entrees,
+         'plats' => $plats,
+         'desserts' => $desserts
         ]);
     }
 
     public function singlemenu(): string
     {
-        /**
-         * Get all data from entrees table
-         */
-        $entreesManager = new EntreeManager();
-        $entrees = $entreesManager->selectAll('name');
-
-        /**
-         * Get all data from plats table
-         */
-        $platsManager = new PlatsManager();
-        $plats = $platsManager->selectAll('name');
-
-        /**
-         * Get all data from desserts table
-         */
-        $dessertsManager = new DessertsManager();
-        $desserts = $dessertsManager->selectAll('name');
         return $this->twig->render('Menu/singlemenu.html.twig', [
-            'entrees' => $entrees,
-            'plats' => $plats,
-            'desserts' => $desserts
+
         ]);
     }
 }

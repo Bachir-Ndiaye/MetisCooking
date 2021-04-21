@@ -11,34 +11,35 @@
 
 
 {% block content %}
-    {% for i in 1..6 %}
+    {% for i in 1..(cooker|length-1) %}
     <div class="card-cooker">
-        <img src="/assets/images/cuistots/chef-{{ random(1,15) }}.jpg" alt="">
+        <img src="/assets/images/cuistots/chef-{{ i }}.jpg" alt="">
+        
         <div class="card-menu">
-
-            {% for j in 1..3 %}
+       
+        <h1>{{ plats[i].cooker }}</h>
                 <div class="details-menu">
-                    <a href="/menu/singlemenu"><p>Menu {{ plats[random(0,9)].name}}</p></a>
-                    <p> | {{ random(5,45) }} € | </p>
-                    <p> {{ random(1500,5000) }}kcal/100gr </p>
+                    <a href="/menu/singlemenu"><p>{{ plats[i].menu}}</p></a>
+                    <p> <img src="/assets/images/flags/{{ menu[i].country }}.png" alt=""></p>
+                    <p> | {{ menu[i].price }} € | </p>
+                    <p> {{ random(1500,5000) }}kcal/100gr | </p>
+                    <p id="panier"><i class="fas fa-shopping-cart"></i>+</p>
                 </div>
                 <div class="menu">
                     <div class="menu-wrap">
-                        <img src="/assets/images/dishdatabase/entrees/entree-{{ random(1,15) }}.jpg" alt="">
-                        <p>{{ entrees[ random(0,9) ].name }}</p>
+                        <img src="/assets/images/dishdatabase/entrees/{{ entrees[i].link }}.jpg" alt="">
+                        <p>{{ entrees[i].dish }}</p>
                     </div>
                     <div class="menu-wrap">
-                        <img src="/assets/images/dishdatabase/plats/plat-{{ random(1,15) }}.jpg" alt="">
-                        <p>{{ plats[ random(0,9) ].name }}</p>
+                        <img src="/assets/images/dishdatabase/plats/{{ plats[i].link }}.jpg" alt="">
+                        <p>{{ plats[i].dish }}</p>
                     </div>
                     <div class="menu-wrap">
-                        <img src="/assets/images/dishdatabase/desserts/dessert-{{ random(1,15) }}.jpg" alt="">
-                        <p>{{ desserts[ random(0,9) ].name }}</p>
+                        <img src="/assets/images/dishdatabase/desserts/{{ desserts[i].link }}.jpg" alt="">
+                        <p>{{ desserts[i].dish }}</p>
                     </div>
-                    <p><i class="fas fa-shopping-cart"></i>+</p>
+                    
                 </div>
-
-            {% endfor %}
         </div>
     </div>
     {% endfor %}
