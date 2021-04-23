@@ -6,9 +6,11 @@ use App\Model\LoginManager;
 
 class LoginController extends AbstractController
 {
+
     public function login(): string
     {
         $errors = [];
+        $success = [];
 
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if (empty($_POST['email'])) {
@@ -21,21 +23,27 @@ class LoginController extends AbstractController
             }
 
             if (empty($errors)) {
-                $success = " Vous êtes connecté!";
-                $data = array_map('trim', $_POST);
-                $email = htmlentities($data['email']);
-                $password = htmlentities($data['password']);
+                if (isset($_POST['email']) && isset($_POST['password'])) {
+                    $data = array_map('trim', $_POST);
+                    $email = htmlentities($data['email']);
+                    $password = htmlentities($data['password']);
 
-                $loginManager = new LoginManager();
-                $loginManager->insert($email, $password);
-                return $this->twig->render('Home/index.html.twig', [
-                    'success' => $success
-                ]);
+                    $loginManager = new LoginManager();
+                    $user = $loginManager->verifLog($email, $password);
+                    if ($user !== -1) {
+                        $success[] = "vous êtes inscrit";
+                        return $this->twig->render('Home/index.html.twig');
+                    }
+                }
             }
+
+            return $this->twig->render('Login/form.html.twig', [
+                'errors' => $errors,
+            ]);
         }
 
         return $this->twig->render('Login/form.html.twig', [
-            'errors' => $errors
+            'errors' => $errors,
         ]);
     }
 }
