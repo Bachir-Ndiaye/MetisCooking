@@ -11,13 +11,13 @@
 
 
 {% block content %}
-    {% for i in 1..(cooker|length-1) %}
-    <div class="card-cooker">
+    {% for i in 0..(cooker|length-1) %}
+    <div class="card-cooker cc-{{ i }}">
         <img src="/assets/images/cuistots/chef-{{ i }}.jpg" alt="">
         
         <div class="card-menu">
        
-        <h1>{{ plats[i].cooker }}</h>
+        <h1>{{ plats[i].cooker }}</h1>
                 <div class="details-menu">
                     <a href="/menu/singlemenu"><p>{{ plats[i].menu}}</p></a>
                     <p> <img src="/assets/images/flags/{{ menu[i].country }}.png" alt=""></p>

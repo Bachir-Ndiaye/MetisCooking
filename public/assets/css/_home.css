@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 .h-head-text {
-  padding-top: 4rem;
   width: 90%;
   margin: auto; }
   .h-head-text h2 {
@@ -22,7 +21,6 @@
 
 .post-head-text {
   padding: 2rem;
-  width: 85%;
   margin: auto;
   text-align: center; }
   .post-head-text p:nth-child(1) {
@@ -37,6 +35,8 @@
   text-align: center;
   padding-top: 2rem;
   padding-bottom: 4rem; }
+  .tracking form p {
+    border: none; }
   .tracking form input {
     padding: .5rem 1.8rem;
     border-radius: 20px; }
@@ -131,21 +131,28 @@
       color: var(--white); }
 
 .box-msg {
-  display: grid; }
+  display: grid;
+  padding: 8rem 0 2rem  0; }
   .box-msg .success {
     background-color: var(--dark-green);
     padding: .25rem .5rem;
     text-align: center;
-    color: var(--white); }
+    color: var(--white);
+    width: auto; }
   .box-msg .alert {
     background-color: var(--red);
     padding: .25rem .5rem;
     text-align: center;
-    color: var(--white); }
+    color: var(--white);
+    margin: auto;
+    width: auto; }
 
 /*=================
   NOS CUISINIERS
 =================*/
+.cc-0 {
+  padding-top: 15rem !important; }
+
 .card-cooker {
   text-align: center;
   margin-bottom: 1.5rem; }
