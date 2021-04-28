@@ -32,7 +32,7 @@ class ContactController extends AbstractController
 
             if (empty($errors)) {
                 $success = "Merci pour votre message ! Il a bien été pris en compte.
-                 Nous vous recontacerons rapidement.";
+                 Nous vous recontacterons rapidement.";
                 $data = array_map('trim', $_POST);
                 $firstname =  htmlentities($data['firstname']);
                 $lastname = htmlentities($data['lastname']);
