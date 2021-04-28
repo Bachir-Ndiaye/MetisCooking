@@ -31,7 +31,8 @@ class ContactController extends AbstractController
             }
 
             if (empty($errors)) {
-                $success = "Votre message a bien été pris en compte. Nous reviendrons vers vous dans les brefs délais.";
+                $success = "Merci pour votre message ! Il a bien été pris en compte.
+                 Nous vous recontacerons rapidement.";
                 $data = array_map('trim', $_POST);
                 $firstname =  htmlentities($data['firstname']);
                 $lastname = htmlentities($data['lastname']);
