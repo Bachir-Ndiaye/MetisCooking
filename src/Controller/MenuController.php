@@ -50,7 +50,29 @@ class MenuController extends AbstractController
 
     public function singlemenu(): string
     {
+
+        $dishManager = new DishManager();
+
+        $entree = 'entree_id';
+        $plat = 'plat_id';
+        $dessert = 'dessert_id';
+
+        //Url traitement
+        $exploseUrl = (explode('/', $_SERVER['REQUEST_URI'])[3]);
+        $format = rawurldecode($exploseUrl);
+
+        //One single menu fetch
+        $singleMenu = $dishManager->selectOneMenu($format);
+
+        $entrees = $dishManager->selectOneDish(intval($singleMenu[$entree]));
+        $plats = $dishManager->selectOneDish(intval($singleMenu[$plat]));
+        $desserts = $dishManager->selectOneDish(intval($singleMenu[$dessert]));
+
         return $this->twig->render('Menu/singlemenu.html.twig', [
+            'menu' => $singleMenu,
+            'entrees' => $entrees,
+            'plats' => $plats,
+            'desserts' => $desserts
 
         ]);
     }

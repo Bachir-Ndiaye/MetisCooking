@@ -299,10 +299,15 @@
   width: 80%;
   margin: auto;
 }
-.main-menu .order .number-order p:nth-child(1) {
+.main-menu .order .number-order #menu-price {
+  background-color: var(--dark-marron);
+  color: var(--white);
+  padding: 0.25rem 0.85rem;
+}
+.main-menu .order .number-order p:nth-child(2) {
   border: 1px solid var(--black);
   padding: 0.25rem 0.85rem;
-  margin-right: 1rem;
+  margin: 0 1rem;
 }
 .main-menu .order .number-order #this-menu {
   background-color: var(--black);
@@ -318,11 +323,17 @@
   max-height: 350px;
   padding: 0 2rem;
 }
+.main-menu .top-3 .top-card p {
+  color: var(--dark-green);
+  font-weight: bold;
+  padding-top: 0.5rem;
+}
 .main-menu .top-3 .top-card img {
   height: 150px;
   width: 150px;
   object-fit: cover;
   border-radius: 50%;
+  border: 8px solid var(--dark-green);
 }
 .main-menu .epd {
   text-align: center;

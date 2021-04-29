@@ -19,8 +19,8 @@
 
         <div class="connect-btn">
             <div class="session-user">
-            {% if session.current_user.firstname is defined %}
-            <a id="login" class="btn" href="/login/destroy"><span id="connect">{{session.current_user.firstname}} - Se déconnecter <i class="fas fa-sign-out-alt"></i></span></a>
+            {% if current_user.firstname is defined %}
+            <a id="login" class="btn" href="/login/destroy"><span id="connect">{{current_user.firstname}} - Se déconnecter <i class="fas fa-sign-out-alt"></i></span></a>
                 {% else %}
                 <a id="login" class="btn" href="/login/login"><i class="fas fa-user"></i><span id="connect">Se connecter</span></a>
             {% endif %}

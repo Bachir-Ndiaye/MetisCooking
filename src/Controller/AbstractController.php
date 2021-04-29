@@ -26,6 +26,10 @@ abstract class AbstractController
      */
     public function __construct()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
         $loader = new FilesystemLoader(APP_VIEW_PATH);
         $this->twig = new Environment(
             $loader,
@@ -35,16 +39,18 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
-
-
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-        $this->twig->addGlobal('session', $_SESSION);
     }
 
     public function destroySession()
     {
         session_destroy();
+    }
+
+    public function customRender(string $template, array $params): string
+    {
+        if (isset($_SESSION['current_user'])) {
+            $params['current_user'] = $_SESSION['current_user'];
+        }
+        return $this->twig->render($template, $params);
     }
 }

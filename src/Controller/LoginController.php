@@ -44,22 +44,25 @@ class LoginController extends AbstractController
                     $errors[] = "veuillez-vous inscrire";
                 } else {
                     $success = "vous êtes connecté";
+
+
                     $_SESSION['current_user'] = $user;
                     header('Location : home/index');
-                    return $this->twig->render('Home/index.html.twig', [
-                        'success' => $success,
-                        'user' => $user
+
+
+                    return $this->customRender('Home/index.html.twig', [
+                        'success' => $success
                         ]);
                 }
             }
 
             return $this->twig->render('Login/form.html.twig', [
-                'errors' => $errors,
+                'errors' => $errors
             ]);
         }
 
         return $this->twig->render('Login/form.html.twig', [
-            'errors' => $errors,
+            'errors' => $errors
         ]);
     }
 }
