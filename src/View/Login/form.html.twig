@@ -7,31 +7,41 @@
 
 {% block content %}
 	<div class="login_page">
-		<div class="box-msg">
-			{% if errors != NULL %}
-				{% for error in errors %}
-					<div class="alert">
-						<p>{{ error }}</p>
-					</div>
-				{% endfor %}
-			{% endif %}
-		</div>
-
-		<div id="contact">
+				<div id="contact">
 			<h1>Connectez-vous</h1>
+					<div class="box-msg">
+						{% if errors != NULL %}
+							{% for error in errors %}
+								<div class="alert">
+									<p>{{ error }}</p>
+								</div>
+							{% endfor %}
+							{% else %}
+									{% for success in successes %}
+										<div class="success">
+											<p>{{ success }}</p>
+										</div>
+									{% endfor %}
+						{% endif %}
+					</div>
+			<form method="post" action="/login/login">
+				<p>
+					<i class="fa fa-user" aria-hidden="true"></i>
+					<input class="champ" type="email" name="email" placeholder="Votre email"/>
+				</p>
 
-			<form method="post" action="/Login/login">
-				<input class="champ" type="email" name="email" placeholder="Votre email"/>
-				<br/>
-				<input class="champ" type="password" name="password" placeholder="Votre mot de passe"/>
-				<br/>
+				<p>
+					<i class="fas fa-lock"></i>
+					<input class="champ" type="password" name="password" placeholder="Votre mot de passe"/>
+				</p>
+
 				<div class="connexion">
-					<ul>
-						<li><a href="#">Mot de passe oublié ?</a></li>
-						<li><a href="/Signup/signup">Pas encore enregistré ?</a></li>
-					</ul>
+					<a href="#">Mot de passe oublié ?</a>
+					<a href="/signup/signup">Pas encore enregistré ?</a>
 				</div>
-				<input class="bouton" type="submit" value="Connexion"/>
+				<p id="connexion">
+					<input class="bouton" type="submit" value="Connexion"/>
+				</p>
 			</form>
 		</div>
 	</div>

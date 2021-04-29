@@ -21,15 +21,31 @@
 		<h1>Nous contacter</h1>
 
 		<form method="post" action="/Contact/formulaire">
-			<input class="champ" type="text" name="firstname" placeholder="Votre prénom"/>
-			<br/>
-			<input class="champ" type="text" name="lastname" placeholder="Votre nom"/>
-			<br/>
-			<input class="champ" type="email" name="email" placeholder="Votre email"/>
-			<br/>
-			<textarea class="champ" name="comment" placeholder="Votre message"></textarea>
-			<br/>
-			<input class="bouton" type="submit" value="Envoyer votre message"/>
+			<p>
+				<i class="fa fa-user" aria-hidden="true"></i>
+				<input class="champ" type="text" name="firstname" placeholder="Votre prénom"/>
+			</p>
+
+			<p>
+				<i class="fa fa-user" aria-hidden="true"></i>
+				<input class="champ" type="text" name="lastname" placeholder="Votre nom"/>
+			</p>
+
+			<p>
+				<i class="fa fa-at" aria-hidden="true"></i>
+				<input class="champ" type="email" name="email" placeholder="Votre email"/>
+			</p>
+
+			<p>
+				<i class="fa fa-envelope-open" aria-hidden="true"></i>
+				<textarea class="champ" name="comment" placeholder="Votre message"></textarea>
+			</p>
+
+			<p id="envelope">
+				<input class="bouton" type="submit" value="Envoyer"/>
+				<i class="fa fa-paper-plane" aria-hidden="true"></i>
+			</p>
+
 		</form>
 	</div>
 </div>

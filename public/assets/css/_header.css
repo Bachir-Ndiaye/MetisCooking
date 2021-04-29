@@ -1,21 +1,19 @@
 .main-header{
     width: auto;
-    height: 150px;
     display: flex;
-    justify-content: space-between;
-    padding: .5rem 1rem;
+    margin: 0;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     background-color: var(--white);
     z-index:10;
+    box-shadow: 0 4px 2px -2px var(--dark-marron);
 }
 
 .logo img{
     height: 100px;
     width: auto;
-   
 }
 
 .nav-links, .connect-btn, .logo{
@@ -37,21 +35,21 @@
     padding: 1.5rem 0;
 }
 .liste-nav.active{
-    margin-top: 3.9rem;
+    margin-top: 1.5rem;
     height: 100vh;
     display: block;
     align-items:center;
     justify-content: center;
     left:0;
     text-align: center;
-    background-color: var(--white); 
+    background-color: var(--white);
 }
 .liste-nav{
     justify-content: center;
     z-index:1;
     display: inline-flex;
     list-style-type: none;
-   
+
 }
 
 .nav-links .logo-menu{
@@ -78,16 +76,19 @@
 .connect-btn{
     display: flex;
 }
+.connect-btn span{
+    padding: 0 .25rem;
+}
 .connect-btn a{
     font-size: small;
 }
 .box-msg{
-    padding-top:150px;
+    padding-top:100px;
 }
 
 /*=====MQ==========*/
 @media screen and (max-width: 1100px){
-    .logo-menu{ 
+    .logo-menu{
         display:flex;
     }
     .liste-nav{
@@ -97,3 +98,25 @@
         flex-direction: column;
     }
 }
+
+@media screen and (max-width: 490px){
+
+    .logo img{
+        height: 90px;
+    }
+    .logo-menu{
+        display:flex;
+        height: 30px;
+        width: 30px;
+    }
+    .liste-nav{
+        position:fixed;
+        width: 100%;
+        display:none;
+        flex-direction: column;
+    }
+    #shopping, #connect{
+        display: none;
+    }
+}
+

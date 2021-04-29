@@ -7,29 +7,43 @@
 
 {% block content %}
 <div class="signup_page">
-	<div class="box-msg">
-		{% if errors != NULL %}
-			{% for error in errors %}
-				<div class="alert">
-					<p>{{ error }}</p>
-				</div>
-			{% endfor %}
-		{% endif %}
-	</div>
+
 
 	<div id="contact">
 		<h1>Formulaire d'inscription</h1>
-
+		<div class="box-msg">
+			{% if errors != NULL %}
+				{% for error in errors %}
+					<div class="alert">
+						<p>{{ error }}</p>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
 		<form method="post" action="/Signup/signup">
-			<input class="champ" type="text" name="firstname" placeholder="Votre prénom"/>
-			<br/>
-			<input class="champ" type="text" name="lastname" placeholder="Votre nom"/>
-			<br/>
-			<input class="champ" type="email" name="email" placeholder="Votre email"/>
-			<br/>
-			<input class="champ" type="password" name="password" placeholder="Votre mot de passe"/>
-			<br/>
-			<input class="bouton" type="submit" value="Enregistrer"/>
+			<p>
+				<i class="fa fa-user" aria-hidden="true"></i>
+				<input class="champ" type="text" name="firstname" placeholder="Votre prénom"/>
+			</p>
+
+			<p>
+				<i class="fa fa-user" aria-hidden="true"></i>
+				<input class="champ" type="text" name="lastname" placeholder="Votre nom"/>
+			</p>
+
+			<p>
+				<i class="fa fa-at" aria-hidden="true"></i>
+				<input class="champ" type="email" name="email" placeholder="Votre email"/>
+			</p>
+
+			<p>
+				<i class="fas fa-lock" aria-hidden="true"></i>
+				<input class="champ" type="password" name="password" placeholder="Votre mot de passe"/>
+			</p>
+
+			<p id="send">
+				<input class="bouton" type="submit" value="Enregistrer"/>
+			</p>
 		</form>
 	</div>
 </div>

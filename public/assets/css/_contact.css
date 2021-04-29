@@ -15,102 +15,117 @@
 
 .contact_page {
   margin: 0;
-  padding: 0;
+  padding: 6rem 0 10rem 0;
   background-image: url(/assets/images/plat2.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 1000px;
 }
 .login_page {
   margin: 0;
-  padding: 0;
+  padding: 8rem 0;
   background-image: url(/assets/images/plat3.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 1000px;
 }
 .signup_page {
-  margin: 0;
-  padding: 0;
+  margin-top: 4rem;
+  padding: 6rem 0;
   background-image: url(/assets/images/plat1.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 1000px;
 }
 #contact {
   width: 500px;
   margin: auto;
-  margin-top: 100px;
   text-align: center;
-  color: #fff;
+  color: var(--white);
   text-transform: uppercase;
   letter-spacing: 2px;
-  background-color: #fff;
+  background-color: var(--white);
   border-radius: 20px;
 }
 #contact h1 {
   font-size: 25px;
-  color: rgb(31, 29, 29);
+  color: var(--black);
   padding-top: 20px;
 }
-.connexion {
-  padding-top: 40px;
-  padding-bottom: 10px;
+textarea{
+  height: 18px;
+}
+.connexion{
+  padding-top: 2rem;
+}
+.connexion a {
+  padding: 0 1rem;
   font-size: 14px;
   letter-spacing: normal;
   text-transform: none;
-  color: #000;  
-}
-.connexion ul{
-  display: flex;
-  list-style: none;
-  justify-content: space-around;
-  margin: auto;
-}
-.connexion ul li a{
   text-decoration: none;
-  color: #000;
+  color: var(--black);
 }
-form {
-  margin-top: 30px;
+#connexion, #send{
+  border:none;
+}
+
+form p{
+  border-bottom: 1px solid var(--black);
+  margin: 2rem auto;
+  width: min-content;
+  padding-bottom: .5rem;
+  display: flex;
+}
+form{
+  padding: 0 0 2rem 0;
 }
 .champ {
-  width: 90%;
   border: none;
   outline: none;
-  border-bottom: 1px solid #ccc;
   font-size: 17px;
-  margin-bottom: 15px;
-  height: 45px;
-  color: #000;
+  color: var(--black);
   font-weight: bold;
   border-radius: 10px;
-  padding: 0 10px;
+  width: auto;
+  height: auto;
+}
+
+#contact .fa,#contact .fas{
+  color : var(--black);
+  padding-right: 5px;
 }
 .bouton {
-  width: 100%;
   margin-top: 15px;
-  background: #f90;
+  background: var(--black);
   border-color: transparent;
-  color: #fff;
+  color: var(--white);
   font-size: 21px;
   font-weight: bold;
-  height: 45px;
-  border-radius: 0 0 20px 20px;
+  border-radius: 20px;
+  transition: .3s;
+  padding: .5rem 1rem;
 }
 .bouton:hover {
-  background: #f60;
+  color: var(--light-marron);
   cursor: pointer;
+}
+#envelope{
+  border: none;
+  width: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .box-msg {
   display: grid;
+}
+.fa-paper-plane{
+
+  padding: 1.7rem 0 0 .5rem;
 }
 .box-msg .success {
   background-color: var(--dark-green);
