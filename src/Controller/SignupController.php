@@ -11,6 +11,12 @@ class SignupController extends AbstractController
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $data = array_map('trim', $_POST);
+            $firstname =  htmlentities($data['firstname']);
+            $lastname = htmlentities($data['lastname']);
+            $email = htmlentities($data['email']);
+            $password = htmlentities($data['password']);
+
             if (empty($_POST['firstname'])) {
                 $errors[] = "Veuillez indiquer votre prénom.";
             }
@@ -27,23 +33,23 @@ class SignupController extends AbstractController
             }
 
             if (empty($errors)) {
-                $success = " Vous êtes bien enregistré!";
-                $data = array_map('trim', $_POST);
-                $firstname =  htmlentities($data['firstname']);
-                $lastname = htmlentities($data['lastname']);
-                $email = htmlentities($data['email']);
-                $password = htmlentities($data['password']);
-
                 $signupManager = new SignupManager();
-                $signupManager->insert($firstname, $lastname, $email, $password);
-                return $this->twig->render('Home/index.html.twig', [
-                    'success' => $success
-                ]);
+                $result = $signupManager->insert($firstname, $lastname, $email, $password);
+                if ($result == false) {
+                    $errors[] = "Cet email est déjà utilisé";
+                } else {
+                    $success = "vous êtes inscrit";
+                    return $this->twig->render('Home/index.html.twig', [
+                        'success' => $success
+                    ]);
+                }
             }
+
+            return $this->twig->render('Signup/form.html.twig', [
+                'errors' => $errors
+            ]);
         }
 
-        return $this->twig->render('Signup/form.html.twig', [
-            'errors' => $errors
-        ]);
+        return $this->twig->render('Signup/form.html.twig');
     }
 }
