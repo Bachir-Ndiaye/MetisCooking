@@ -175,7 +175,8 @@
     padding: .25rem .5rem;
     text-align: center;
     color: var(--white);
-    width: auto;
+    width: max-content;
+    margin: auto;
   }
   .alert{
     background-color: var(--red);

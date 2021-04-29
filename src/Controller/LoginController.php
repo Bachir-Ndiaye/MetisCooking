@@ -8,6 +8,16 @@ use function Amp\Iterator\filter;
 
 class LoginController extends AbstractController
 {
+    public function destroy()
+    {
+        $this->destroySession();
+        $success = 'Vous êtes bien deconnecté';
+
+
+        return $this->twig->render('Home/index.html.twig', [
+            'session_destroy' => $success
+        ]);
+    }
 
     public function login(): string
     {
@@ -34,7 +44,12 @@ class LoginController extends AbstractController
                     $errors[] = "veuillez-vous inscrire";
                 } else {
                     $success = "vous êtes connecté";
-                    return $this->twig->render('Home/index.html.twig', ['success' => $success]);
+                    $_SESSION['current_user'] = $user;
+                    header('Location : home/index');
+                    return $this->twig->render('Home/index.html.twig', [
+                        'success' => $success,
+                        'user' => $user
+                        ]);
                 }
             }
 

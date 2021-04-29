@@ -35,5 +35,16 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
+
+
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $this->twig->addGlobal('session', $_SESSION);
+    }
+
+    public function destroySession()
+    {
+        session_destroy();
     }
 }
