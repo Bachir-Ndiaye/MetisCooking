@@ -8,7 +8,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP DATABASE IF EXISTS metiscooking;
 CREATE DATABASE metiscooking;
 USE metiscooking;
-DROP TABLE IF EXISTS menus, role, cookers, allergene, users, dishes, ingredients, comments, commandorder, ingredients_dishes, allergene_dishes,users_dishes,newsletters;
+DROP TABLE IF EXISTS menus, role, cookers, allergene, users, dishes, ingredients, comments, commandorder, ingredients_dishes, allergene_dishes,users_dishes,newsletters, contact;
 SET FOREIGN_KEY_CHECKS = 1;
 
 
@@ -124,6 +124,13 @@ CREATE TABLE `newsletters` (
     `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `email` VARCHAR(255) 
 );
+CREATE TABLE `contact` (
+    `id` int  NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	`firstname` VARCHAR(255) ,
+    `lastname` VARCHAR(255) ,
+	`email` VARCHAR(255) ,
+	`comment` TEXT 
+);
 
 -- Insert Data in Tables (jeu de données)
 INSERT INTO `cookers` (`name`) VALUES ("Paul Bocuse"),
@@ -182,6 +189,10 @@ INSERT INTO `menus` (`name`,`country`,`price`,`entree_id`,`plat_id`,`dessert_id`
                                                                                                           ("Menu Cassoulet", "fr", "19","28","1","18","7"),
                                                                                                           ("Menu Bolognaise", "it", "15","29","6","19","8"),
                                                                                                           ("Menu Pasta", "it", "23","30","6","20","9");
+                                                                                                          
+INSERT INTO `contact` (`firstname`, `lastname`, `email`, `comment`) VALUES  ("Adam", "Brosse", "adam.brosse@carrie.com", "Bonjour, Jusqu'ou pouvez vous effectuer les livraisons? merci. Cordialement."),
+																			("Thomas", "Pesquet", "thomas.pesquet@iss.com", "Bonjour, votre site est super, mais, livrez vous la stations spaciale, j'aurais fais partager à mes collegues la cuisine lyonnaise! bonne continuation."),
+                                                                            ("Bill", "Boquet", "bill.boquet@joueur.com", "Bonjour, est il possible d'etre livreé la nuit, je travaille de nuit et aurais souhaite organiser un dinner apero a quatre heure pour notre dernier vendredi avant nos vacances. au plaisir de vous lire.");                                                                                                          
 
 
 
@@ -189,3 +200,4 @@ INSERT INTO `menus` (`name`,`country`,`price`,`entree_id`,`plat_id`,`dessert_id`
 SELECT * FROM `cookers`;
 SELECT * FROM `menus`;
 SELECT * FROM `dishes`;
+SELECT * FROM `contact`;
