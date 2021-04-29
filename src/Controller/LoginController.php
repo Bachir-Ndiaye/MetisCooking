@@ -12,9 +12,12 @@ class LoginController extends AbstractController
     public function login(): string
     {
         $errors = [];
-        $success = [];
+        $success = '';
 
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $data = array_map('trim', $_POST);
+            $email = htmlentities($data['email']);
+            $password = htmlentities($data['password']);
             if (empty($_POST['email'])) {
                 $errors[] = "Veuillez indiquer votre email .";
             } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -25,17 +28,13 @@ class LoginController extends AbstractController
             }
 
             if (empty($errors)) {
-                if (isset($_POST['email']) && isset($_POST['password'])) {
-                    $data = array_map('trim', $_POST);
-                    $email = htmlentities($data['email']);
-                    $password = htmlentities($data['password']);
-
-                    $loginManager = new LoginManager();
-                    $user = $loginManager->verifLog($email, $password);
-                    if ($user !== -1) {
-                        $success[] = "vous êtes inscrit";
-                        return $this->twig->render('Home/index.html.twig');
-                    }
+                $loginManager = new LoginManager();
+                $user = $loginManager->verifLog($email, $password);
+                if ($user === -1) {
+                    $errors[] = "veuillez-vous inscrire";
+                } else {
+                    $success = "vous êtes connecté";
+                    return $this->twig->render('Home/index.html.twig', ['success' => $success]);
                 }
             }
 

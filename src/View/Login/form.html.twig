@@ -7,23 +7,17 @@
 
 {% block content %}
 	<div class="login_page">
-				<div id="contact">
+		<div id="contact">
 			<h1>Connectez-vous</h1>
-					<div class="box-msg">
-						{% if errors != NULL %}
-							{% for error in errors %}
-								<div class="alert">
-									<p>{{ error }}</p>
-								</div>
-							{% endfor %}
-							{% else %}
-									{% for success in successes %}
-										<div class="success">
-											<p>{{ success }}</p>
-										</div>
-									{% endfor %}
-						{% endif %}
-					</div>
+			<div class="box-msg">
+				{% if errors != NULL %}
+					{% for error in errors %}
+						<div class="alert">
+							<p>{{ error }}</p>
+						</div>
+					{% endfor %}
+				{% endif %}
+			</div>
 			<form method="post" action="/login/login">
 				<p>
 					<i class="fa fa-user" aria-hidden="true"></i>
