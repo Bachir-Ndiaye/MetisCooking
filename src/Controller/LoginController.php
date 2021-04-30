@@ -52,6 +52,7 @@ class LoginController extends AbstractController
 
                     return $this->customRender('Home/index.html.twig', [
                         'success' => $success
+
                         ]);
                 }
             }

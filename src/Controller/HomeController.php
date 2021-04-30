@@ -63,6 +63,9 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
+
+
+
         $email = '';
         $postalcode = '';
         $errors = [];
