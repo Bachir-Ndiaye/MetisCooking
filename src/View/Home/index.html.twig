@@ -11,11 +11,15 @@
     <div class="box-msg">
         {% if success != NULL %}
             <div class="success">
-                <p>{{ success }}</p>
+                <h1>{{ success }}</h1>
             </div>
         {% elseif errors != NULL %}
             <div class="alert">
-                <p>{{ errors }}</p>
+                <h>{{ errors }}</h1>
+            </div>
+            {% elseif current_user.lastname is defined %}
+            <div class="success">
+                <h1>{{ session_destroy }}</h1>
             </div>
         {% endif %}
     </div>

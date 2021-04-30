@@ -24,4 +24,24 @@ class DishManager extends AbstractManager
 
         return $this->pdo->query($query)->fetchAll();
     }
+
+    public function selectOneMenu(string $menuName): array
+    {
+       // prepared request
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE name=:name;");
+        $statement->bindValue('name', $menuName, \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
+
+    public function selectOneDish(int $dishId)
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("SELECT * FROM dishes WHERE id=:id");
+        $statement->bindValue('id', $dishId, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 }

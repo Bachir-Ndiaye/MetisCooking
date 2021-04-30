@@ -19,7 +19,7 @@
        
         <h1>{{ plats[i].cooker }}</h1>
                 <div class="details-menu">
-                    <a href="/menu/singlemenu"><p>{{ plats[i].menu}}</p></a>
+                    <a href="/menu/singlemenu/{{plats[i].menu}}"><p>{{ plats[i].menu}}</p></a>
                     <p> <img src="/assets/images/flags/{{ menu[i].country }}.png" alt=""></p>
                     <p> | {{ menu[i].price }} € | </p>
                     <p> {{ random(1500,5000) }}kcal/100gr | </p>

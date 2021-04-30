@@ -14,38 +14,40 @@
              <!--Top 3 ideas -->
              <div class="top-3">
                  <div class="top-card">
-                     <img src="https://fakeimg.pl/150x150/">
+                     <img src="/assets/images/singlemenu/bio.jpg">
                      <p>Bio</p>
                  </div>
                  <div class="top-card">
-                     <img src="https://fakeimg.pl/150x150/">
-                     <p>Temps de cuisson</p>
+                     <img src="/assets/images/singlemenu/rapportQP.png">
+                     <p>Qualité / Prix</p>
                  </div>
                  <div class="top-card">
-                     <img src="https://fakeimg.pl/150x150/">
-                     <p>Temps</p>
+                     <img src="/assets/images/singlemenu/satisfait.jpg">
+                     <p>Garanti</p>
                  </div>
              </div>
 
              <!--EPD details-->
              <div class="epd">
                  <div class="box-category">
-                     <h1>{{ entrees[ random(0,9) ].name }}</h1>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor illo laudantium natus nostrum omnis quaerat, velit voluptas! Ducimus, eius esse, fuga illum inventore iure, laborum minima modi nihil quasi quo?</p>
+                     <h1>{{ entrees.name }}</h1>
+                     <p>{{ entrees.description }}</p>
                  </div>
                  <div class="box-category">
-                     <h1>{{ plats[ random(0,9) ].name }}</h1>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor illo laudantium natus nostrum omnis quaerat, velit voluptas! Ducimus, eius esse, fuga illum inventore iure, laborum minima modi nihil quasi quo?</p>
+                     <h1>{{ plats.name }}</h1>
+                     <p>{{ plats.description }}</p>
                  </div>
                  <div class="box-category">
-                     <h1>{{ desserts[ random(0,9) ].name }}</h1>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor illo laudantium natus nostrum omnis quaerat, velit voluptas! Ducimus, eius esse, fuga illum inventore iure, laborum minima modi nihil quasi quo?</p>
+                     <h1>{{ desserts.name }}</h1>
+                     <p>{{desserts.description}}</p>
                  </div>
              </div>
 
          </div>
          <div class="order">
+         
              <div class="number-order">
+                <p id="menu-price">{{menu.price}} €</p>
                  <p><span id="minus">-</span> 0 <span id="plus">+</span> </p>
                  <p id="this-menu">Commandez ce menu</p>
              </div>
