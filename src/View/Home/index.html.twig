@@ -17,7 +17,7 @@
             <div class="alert">
                 <h>{{ errors }}</h1>
             </div>
-            {% elseif session.current_user.lastname is defined %}
+            {% elseif current_user.lastname is defined %}
             <div class="success">
                 <h1>{{ session_destroy }}</h1>
             </div>
