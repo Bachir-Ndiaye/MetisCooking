@@ -2,7 +2,9 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    {{ parent() }} Accueil
+    {{ parent() }} Accueil {{user.lastname}}
+
+    
 {% endblock %}
 
 {% block content %}
@@ -22,6 +24,7 @@
                 <h1>{{ session_destroy }}</h1>
             </div>
         {% endif %}
+        
     </div>
 
     <!--Header Text-->
