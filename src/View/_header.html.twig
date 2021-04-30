@@ -19,8 +19,11 @@
 
         <div class="connect-btn">
             <div class="session-user">
-            {% if current_user.firstname is defined %}
-            <a id="login" class="btn" href="/login/destroy"><span id="connect">{{current_user.firstname}} - Se déconnecter <i class="fas fa-sign-out-alt"></i></span></a>
+            <!-- Si user defini => si nom défini => on teste role id -->
+            {% if current_user is defined and current_user.role_id == "1" %}
+                <a id="login" class="btn" href="/login/destroy"><span id="connect">Espace - {{current_user.firstname|upper}}</span></a>
+                {% elseif current_user is defined and current_user.role_id != "1" %}
+                <a id="login" class="btn" href="/login/destroy"><span id="connect">{{current_user.firstname|upper}} - Se déconnecter<i class="fas fa-sign-out-alt"></i></span></a>
                 {% else %}
                 <a id="login" class="btn" href="/login/login"><i class="fas fa-user"></i><span id="connect">Se connecter</span></a>
             {% endif %}

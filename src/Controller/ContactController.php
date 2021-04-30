@@ -47,7 +47,7 @@ class ContactController extends AbstractController
             }
         }
 
-        return $this->twig->render('Contact/form.html.twig', [
+        return $this->customRender('Contact/form.html.twig', [
             'errors' => $errors
         ]);
     }

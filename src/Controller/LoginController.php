@@ -39,19 +39,20 @@ class LoginController extends AbstractController
 
             if (empty($errors)) {
                 $loginManager = new LoginManager();
+
+                // $user = $verif
                 $user = $loginManager->verifLog($email, $password);
                 if ($user === -1) {
                     $errors[] = "veuillez-vous inscrire";
                 } else {
                     $success = "vous êtes connecté";
 
-
                     $_SESSION['current_user'] = $user;
                     header('Location : home/index');
 
-
-                    return $this->customRender('Home/index.html.twig', [
-                        'success' => $success
+                        // Default User
+                        return $this->customRender('Home/index.html.twig', [
+                            'success' => $success
                         ]);
                 }
             }

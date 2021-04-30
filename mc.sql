@@ -195,9 +195,17 @@ INSERT INTO `contact` (`firstname`, `lastname`, `email`, `comment`) VALUES  ("Ad
                                                                             ("Bill", "Boquet", "bill.boquet@joueur.com", "Bonjour, est il possible d'etre livreé la nuit, je travaille de nuit et aurais souhaite organiser un dinner apero a quatre heure pour notre dernier vendredi avant nos vacances. au plaisir de vous lire.");                                                                                                          
 
 
+INSERT INTO `role` (`name`) VALUES ("admin"),
+                                    ("cuisinier"),
+                                    ("utilisateur");
+
+-- Create an admin for test
+INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `role_id`) VALUES ("admin", "admin", "admin@metiscooking.fr", "admin", "1");
+
 
 -- Show tables
 SELECT * FROM `cookers`;
 SELECT * FROM `menus`;
 SELECT * FROM `dishes`;
 SELECT * FROM `contact`;
+SELECT * FROM `role`;

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\SignupManager;
+use App\Model\LoginManager;
 
 class SignupController extends AbstractController
 {
@@ -39,9 +40,15 @@ class SignupController extends AbstractController
                     $errors[] = "Cet email est déjà utilisé";
                 } else {
                     $success = "vous êtes inscrit";
-                    return $this->twig->render('Home/index.html.twig', [
-                        'success' => $success
-                    ]);
+
+                    $loginManager = new LoginManager();
+                    $user = $loginManager->verifLog($email, $password);
+                    $_SESSION['current_user'] = $user;
+                    header('Location : home/index');
+
+                        return $this->customRender('Home/index.html.twig', [
+                            'success' => $success
+                        ]);
                 }
             }
 

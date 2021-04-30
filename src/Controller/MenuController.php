@@ -38,7 +38,7 @@ class MenuController extends AbstractController
         $menuManager = new MenuManager();
         $menus = $menuManager->selectAll();
 
-        return $this->twig->render('Menu/index.html.twig', [
+        return $this->customRender('Menu/index.html.twig', [
          'dish' => $dishes,
          'cooker' => $cookers,
          'menu' => $menus,
@@ -68,7 +68,7 @@ class MenuController extends AbstractController
         $plats = $dishManager->selectOneDish(intval($singleMenu[$plat]));
         $desserts = $dishManager->selectOneDish(intval($singleMenu[$dessert]));
 
-        return $this->twig->render('Menu/singlemenu.html.twig', [
+        return $this->customRender('Menu/singlemenu.html.twig', [
             'menu' => $singleMenu,
             'entrees' => $entrees,
             'plats' => $plats,

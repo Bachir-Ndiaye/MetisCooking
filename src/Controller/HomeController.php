@@ -79,7 +79,7 @@ class HomeController extends AbstractController
             }
         }
 
-        return $this->twig->render('Home/index.html.twig', [
+        return $this->customRender('Home/index.html.twig', [
             'email' => $email,
             'errors' => $errors,
             'success' => $success,

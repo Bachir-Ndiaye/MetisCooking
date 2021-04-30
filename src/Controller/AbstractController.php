@@ -26,6 +26,7 @@ abstract class AbstractController
      */
     public function __construct()
     {
+       //If there is no session actif => create one and active it
         if (!isset($_SESSION)) {
             session_start();
         }
