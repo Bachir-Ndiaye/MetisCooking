@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} Ma liste de commande
+{% endblock %}
+
+{% block content %}
+<div class="box-command">
+    {% if errors != NULL %}
+        <div class="alert">
+            <h1>{{ errors }}</h1>
+        </div>
+    {% endif %}
+    {% for command in mycommands %}
+        <div class="box-menu">
+            <p>Menu : {{ command.name }}</p>
+            <p>Prix : {{ command.price }} €</p>
+            <form action="/menu/delete/{{ command.id }}" method="post">
+                <input type="submit" name="delete" value="Supprimer">
+            </form>
+        </div>
+    {% endfor %}
+
+</div>
+
+    <div class="confirm-command">
+        <form action="/menu/confirm" method="POST">
+            <input type="submit" name="confirm-command" value="Valider sa commande !">
+        </form>
+    </div>
+{% endblock %}

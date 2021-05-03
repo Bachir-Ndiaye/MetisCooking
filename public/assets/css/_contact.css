@@ -145,3 +145,19 @@ form{
     width: 90%;
   }
 }
+
+
+
+/*===========
+List contact
+============*/
+.list-contact{
+  padding-top: 15rem;
+  height: 100vh;
+  margin: auto;
+  width: 80%;
+}
+
+.list-contact h1{
+  padding-bottom: 2rem;
+}

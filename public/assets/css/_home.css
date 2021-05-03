@@ -347,4 +347,15 @@
   padding: 2rem 0;
 }
 
+/*=================
+  MES COMMANDES
+=================*/
+.box-command {
+  padding-top: 250px;
+}
+.box-command .my-command {
+  padding-top: 8rem;
+  color: var(--black);
+}
+
 /*# sourceMappingURL=_home.css.map */
