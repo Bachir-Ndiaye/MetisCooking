@@ -13,11 +13,11 @@
 			<h1>Connectez-vous</h1>
 			<!--Display messages when user enters email address-->
 			<div class="box-msg">
-				{% if success is not null %}
+				{% if success !=null %}
 					<div class="success">
 						<h1>{{ success }}</h1>
 					</div>
-				{% elseif errors is not null %}
+				{% elseif errors !=null %}
 					<div class="alert">
 						<h1>{{ errors }}</h1>
 					</div>

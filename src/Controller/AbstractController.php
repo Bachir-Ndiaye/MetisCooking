@@ -60,6 +60,8 @@ abstract class AbstractController
         }
         if (isset($_SESSION['command-status'])) {
             $params['command-status'] = $_SESSION['command-status'];
+        } elseif (!isset($_SESSION['command-status'])) {
+            $_SESSION['command-status'] = null;
         }
         return $this->twig->render($template, $params);
     }
