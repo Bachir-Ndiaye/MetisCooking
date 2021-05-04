@@ -77,4 +77,14 @@ abstract class AbstractController
         }
         return true;
     }
+
+     /**
+     *  HTML Entities on a string.
+     */
+    public function htmlEntities(array $datas)
+    {
+        foreach ($datas as $key => $value) {
+            $datas[$key] = htmlentities($value);
+        }
+    }
 }
