@@ -77,14 +77,6 @@ class MenuController extends AbstractController
         ]);
     }
 
-    public function command()
-    {
-
-        return $this->customRender('Menu/command.html.twig', [
-
-        ]);
-    }
-
     /**
      * Récuperer le menu a mettre dans la base de données
      */
