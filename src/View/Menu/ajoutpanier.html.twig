@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+<div class="container-add-panier">
 
     <div class="box-msg">
         {% if success != NULL %}
@@ -13,7 +14,7 @@
             </div>
         {% elseif errors != NULL %}
             <div class="alert">
-                <h1>{{ errors }}</h1>
+                <p>{{ errors }}</p>
             </div>
         {% endif %}
 
@@ -23,10 +24,12 @@
         {% if commandstatus is defined and commandstatus is not null %}
             <div class="status">
                 <i class="fas fa-info-circle"></i>
-                <p>{{ commandstatus }}</p>
+                <h1>{{ commandstatus }}</h1>
             </div>
         {% endif %}
     </div>
+
+    {% if mycommands !=null %}
     <div class="box-command">
         <table>
             <tr>
@@ -34,29 +37,45 @@
                 <th>Prix (€)</th>
             </tr>
         </table>
-    {% for command in mycommands %}
-        <div class="box-menu">
-          <table>
-                <tr>
-                    <td><p>{{ command.name }}</p></td>
-                    <td><p>{{ command.price }}</p></td>
-                </tr>
-          </table>
+        {% endif %}
 
-            <div class="delete-section">
-                <form action="/menu/delete/{{ loop.index0 }}" method="post">
-                    <button>Suprimer</button>
+        {% for command in mycommands %}
+            <div class="box-menu">
+                <table>
+                    <tr>
+                        <td><p>{{ command.name }}</p></td>
+                        <td><p>{{ command.price }}</p></td>
+                    </tr>
+                </table>
+
+                <div class="delete-section">
+                    <form action="/menu/delete/{{ loop.index0 }}" method="post">
+                        <button>Suprimer</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+
+
+        {% if mycommands !=null %}
+        <div class="total">
+            <table>
+                <tr>
+                    <th>Total : </th>
+                    <th>{{ total }} (€)</th>
+                </tr>
+            </table>
+            {% endif %}
+
+        {% if mycommands !=null %}
+            <div class="confirm-command">
+                <form action="/menu/confirm" method="POST">
+                    <input type="submit" name="confirm-command" value="Valider sa commande !">
                 </form>
             </div>
-        </div>
-    {% endfor %}
+        {% endif %}
+    </div>
 
-        <div class="confirm-command">
-            <form action="/menu/confirm" method="POST">
-                <input type="submit" name="confirm-command" value="Valider sa commande !">
-            </form>
-        </div>
 </div>
-
 
 {% endblock %}

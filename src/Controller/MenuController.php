@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\AbstractManager;
+use App\Model\CommandManager;
 use App\Model\CookersManager;
 use App\Model\DishManager;
 use App\Model\MenuManager;
@@ -106,28 +107,44 @@ class MenuController extends AbstractController
     public function ajoutpanier()
     {
         $myCommands = [];
+        $total = 0;
+
         $commandStatus = $_SESSION['command-status'];
         if (isset($_SESSION['command'])) {
             $myCommands = $_SESSION['command'];
         } else {
             $this->errors = "Votre panier est vide pour le moment !";
         }
+        foreach ($myCommands as $command) {
+            $total += intval($command['price']);
+        }
+
+        $_SESSION['command-total'] = $total;
         return $this->customRender('Menu/ajoutpanier.html.twig', [
             'mycommands' => $myCommands,
             'commandstatus' => $commandStatus,
-            'errors' => $this->errors
+            'errors' => $this->errors,
+            'total' => $total
         ]);
     }
 
     public function confirm()
     {
-
-        //mettre la partie de suivie de commande dès lors que l'utilisateur appuis sur confirmer commande
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (isset($_POST['confirm-command'])) {
                 $this->success = "Votre commande est prise en compte. Merci pour votre confiance";
                 $_SESSION['command-status'] = "Votre commande est entre de bonnes mains... Patience !";
                 unset($_SESSION['command']);
+
+
+                $commandManager = new CommandManager();
+
+                $commandManager->insert(
+                    $_SESSION['command-total'],
+                    date('d/m/y H:i:s'),
+                    intval($_SESSION['current_user']['id'])
+                );
+
                 return $this->customRender('Home/index.html.twig', [
                     'success' => $this->success
                 ]);
@@ -145,5 +162,12 @@ class MenuController extends AbstractController
             return $this->customRender('Home/index.html.twig', [
                 'success' => $this->success
             ]);
+    }
+
+    public function notconnected()
+    {
+        header("HTTP/1.1 404 Not Found");
+        echo 'Vous devez vous connecter pour passer une commande. 
+            Cliquez ici <a href="/login/login">ici</a> pour vous connecter ou vous inscrire !';
     }
 }

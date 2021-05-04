@@ -28,7 +28,11 @@
                     <p> <img src="/assets/images/flags/{{ menu[i].country }}.png" alt=""></p>
                     <p> | {{ menu[i].price }} € | </p>
                     <p> {{ random(1500,5000) }}kcal/100gr | </p>
+                    {% if current_user is defined %}
                     <a href="/menu/traitement/{{ plats[i].menu }}"><p id="paniers"><i class="fas fa-shopping-cart"></i>+</p></a>
+                    {% else %}
+                        <a href="/menu/notconnected/"><p id="paniers"><i class="fas fa-shopping-cart"></i>+</p></a>
+                    {% endif %}
                 </div>
                 <div class="menu">
                     <div class="menu-wrap">

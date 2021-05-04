@@ -359,7 +359,7 @@
   padding: 0 1rem;
   font-size: xx-large;
 }
-.command-status .status p {
+.command-status .status h1 {
   margin: auto 0;
   color: var(--dark-green);
   font-weight: bold;
@@ -400,6 +400,11 @@
 .box-command .confirm-command form input:hover {
   color: var(--dark-green);
   background-color: var(--light-marron);
+}
+
+.container-add-panier {
+  height: 80vh;
+  background-color: var(--white);
 }
 
 /*# sourceMappingURL=_home.css.map */

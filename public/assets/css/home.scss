@@ -381,7 +381,7 @@
       padding: 0 1rem;
       font-size: xx-large;
     }
-    p{
+    h1{
       margin: auto 0;
       color: var(--dark-green);
       font-weight: bold;
@@ -428,5 +428,12 @@
     }
     }
   }
+}
+
+.container-add-panier{
+  height : 80vh;
+  //background-image : url("/assets/images/background-images/serveur.svg");
+  //object-fit : contain;
+  background-color: var(--white);
 }
 
