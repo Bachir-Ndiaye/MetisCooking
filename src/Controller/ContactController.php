@@ -10,24 +10,23 @@ class ContactController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if (!($this->isEmpty($_POST))) {
-                $errors[] = "Tous les champs doivent être remplis";
+                $this->errors = "Tous les champs doivent être remplis";
             }
 
             if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                $errors[] = "Adresse Email non valide";
+                $this->errors = "Adresse Email non valide";
             }
 
             if (strlen($_POST['comment']) < 5) {
-                $errors[] = "Le message doit contenir plus de 5 caractères .";
+                $this->errors = "Le message doit contenir plus de 5 caractères .";
             }
 
-            if (empty($errors)) {
-                $success = "Merci pour votre message ! Il a bien été pris en compte.
+            if (empty($this->errors)) {
+                $this->success = "Merci pour votre message ! Il a bien été pris en compte.
                  Nous vous recontacterons rapidement.";
 
                 $data = array_map('trim', $_POST);
 
-                $this->htmlEntities($data);
                 $firstname =  htmlentities($data['firstname']);
                 $lastname = htmlentities($data['lastname']);
                 $email = htmlentities($data['email']);
