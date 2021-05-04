@@ -372,11 +372,61 @@
 /*=================
   MES COMMANDES
 =================*/
-.box-command{
-  padding-top: 250px;
-
-  .my-command{
-    padding-top: 8rem;
-    color: var(--black);
+.command-status{
+  .status{
+    display: flex;
+    justify-content: center;
+    .fas{
+      color: var(--dark-green);
+      padding: 0 1rem;
+      font-size: xx-large;
+    }
+    p{
+      margin: auto 0;
+      color: var(--dark-green);
+      font-weight: bold;
+    }
   }
 }
+.box-command{
+  padding-bottom: 1rem;
+  height: 100vh;
+  padding-top: 115px;
+  text-align: center;
+  table{
+    display: flex;
+    justify-content: center;
+    th{
+      padding: 0 6rem;
+      font-size: xx-large;
+    }
+    td{
+      padding: 0 8rem;
+    }
+  }
+  .box-menu{
+    display: flex;
+    justify-content: center;
+    .delete-section{
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .confirm-command{
+    form{
+      input{
+        background-color: var(--dark-marron);
+        padding: .5rem .75rem;
+        color: var(--light-marron);
+        border-radius: 10px;
+        transition : .4s;
+      }
+      input:hover{
+      color: var(--dark-green);
+        background-color: var(--light-marron);
+    }
+    }
+  }
+}
+

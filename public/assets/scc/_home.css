@@ -350,56 +350,18 @@
 /*=================
   MES COMMANDES
 =================*/
-.command-status .status {
-  display: flex;
-  justify-content: center;
-}
-.command-status .status .fas {
-  color: var(--dark-green);
-  padding: 0 1rem;
-  font-size: xx-large;
-}
-.command-status .status p {
-  margin: auto 0;
-  color: var(--dark-green);
-  font-weight: bold;
-}
-
 .box-command {
-  padding-bottom: 1rem;
-  height: 100vh;
-  padding-top: 115px;
-  text-align: center;
-}
-.box-command table {
-  display: flex;
-  justify-content: center;
-}
-.box-command table th {
-  padding: 0 6rem;
-  font-size: xx-large;
-}
-.box-command table td {
-  padding: 0 8rem;
+  padding-top: 250px;
 }
 .box-command .box-menu {
-  display: flex;
-  justify-content: center;
+  padding: 1rem 0;
 }
 .box-command .box-menu .delete-section {
   display: flex;
-  justify-content: center;
 }
-.box-command .confirm-command form input {
-  background-color: var(--dark-marron);
-  padding: 0.5rem 0.75rem;
-  color: var(--light-marron);
-  border-radius: 10px;
-  transition: 0.4s;
-}
-.box-command .confirm-command form input:hover {
-  color: var(--dark-green);
-  background-color: var(--light-marron);
+.box-command .my-command {
+  padding-top: 8rem;
+  color: var(--black);
 }
 
 /*# sourceMappingURL=_home.css.map */

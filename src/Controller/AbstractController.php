@@ -59,11 +59,14 @@ abstract class AbstractController
         if (isset($_SESSION['command'])) {
             $params['command'][] = $_SESSION['command'];
         }
+        if (isset($_SESSION['command-status'])) {
+            $params['command-status'] = $_SESSION['command-status'];
+        }
         return $this->twig->render($template, $params);
     }
 
     /**
-     *  Check if a variable is empty of not.
+     *  Check if a variable in an array is empty of not.
      */
     public function isEmpty(array $datas): bool
     {
@@ -73,15 +76,5 @@ abstract class AbstractController
             }
         }
         return true;
-    }
-
-     /**
-     *  HTML Entities on a string.
-     */
-    public function htmlEntities(array $datas)
-    {
-        foreach ($datas as $key => $value) {
-            $datas[$key] = htmlentities($value);
-        }
     }
 }

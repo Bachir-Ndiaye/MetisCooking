@@ -5,27 +5,59 @@
 {% endblock %}
 
 {% block content %}
-<div class="box-command">
-    {% if errors != NULL %}
-        <div class="alert">
-            <h1>{{ errors }}</h1>
-        </div>
-    {% endif %}
+
+    <div class="box-msg">
+        {% if success != NULL %}
+            <div class="success">
+                <h1>{{ success }}</h1>
+            </div>
+        {% elseif errors != NULL %}
+            <div class="alert">
+                <h1>{{ errors }}</h1>
+            </div>
+        {% endif %}
+
+    </div>
+
+    <div class="command-status">
+        {% if commandstatus is defined and commandstatus is not null %}
+            <div class="status">
+                <i class="fas fa-info-circle"></i>
+                <p>{{ commandstatus }}</p>
+            </div>
+        {% endif %}
+    </div>
+    <div class="box-command">
+        <table>
+            <tr>
+                <th>Menu(s)</th>
+                <th>Prix (€)</th>
+            </tr>
+        </table>
     {% for command in mycommands %}
         <div class="box-menu">
-            <p>Menu : {{ command.name }}</p>
-            <p>Prix : {{ command.price }} €</p>
-            <form action="/menu/delete/{{ command.id }}" method="post">
-                <input type="submit" name="delete" value="Supprimer">
-            </form>
+          <table>
+                <tr>
+                    <td><p>{{ command.name }}</p></td>
+                    <td><p>{{ command.price }}</p></td>
+                </tr>
+          </table>
+
+            <div class="delete-section">
+                <form action="/menu/delete/{{ loop.index0 }}" method="post">
+                    <button>Suprimer</button>
+                </form>
+                {{ dump(loop.index0) }}
+            </div>
         </div>
     {% endfor %}
 
+        <div class="confirm-command">
+            <form action="/menu/confirm" method="POST">
+                <input type="submit" name="confirm-command" value="Valider sa commande !">
+            </form>
+        </div>
 </div>
 
-    <div class="confirm-command">
-        <form action="/menu/confirm" method="POST">
-            <input type="submit" name="confirm-command" value="Valider sa commande !">
-        </form>
-    </div>
+
 {% endblock %}
