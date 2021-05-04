@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} Mes commandes
+{% endblock %}
+
+{% block content %}
+
+    <div class="box-command">
+
+        <a href="/menu/cookers">retour au menu</a>
+
+        {% if success != NULL %}
+            <div class="success">
+                <h1>{{ success }}</h1>
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}

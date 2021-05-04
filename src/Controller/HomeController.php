@@ -14,41 +14,37 @@ use App\Model\HomeManager;
 class HomeController extends AbstractController
 {
 
-    public function handlePostEmail(&$errors, &$success, $value): void
+    public function handlePostEmail($value): void
     {
-        /**
-             * Form to take email address for newsletter
-             * */
-                $email = trim($value);
+        $email = trim($value);
         if (filter_var($email, FILTER_VALIDATE_EMAIL) == $email && !empty($email)) {
-            $success = "Votre adresse e-mail a été bien enregistré.";
+            $this->success = "Votre adresse e-mail a été bien enregistré.";
         }
+
         if (empty($email)) {
-            $errors = "Le champ email ne peut pas être vide.";
+            $this->errors = "Le champ email ne peut pas être vide.";
         } else {
-            $errors = "Adresse e-mail incorrect. Veuillez la re-saisir. ";
+            $this->errors = "Adresse e-mail incorrect. Veuillez la re-saisir. ";
         }
     }
-    public function handlePostPostalCode(&$errors, &$success, $value, $pCode): void
+
+    public function handlePostPostalCode($value, $pCode): void
     {
-            /**
-             * Form to take postal code to locate user
-             * */
-                $postalcode = trim($value);
+        $postalcode = trim($value);
         if (preg_match($pCode, $postalcode)) {
-            $success = "Un instant, nous recherchons nos cuisiniers les plus proche de chez vous";
+            $this->success = "Un instant, nous recherchons nos cuisiniers les plus proche de chez vous";
 
             // if validation is ok, insert and redirection
             $homeManager = new HomeManager();
             $homeManager->insert($postalcode);
         }
         if (empty($postalcode)) {
-            $errors = "Le champ code postal ne peut pas être vide.";
+            $this->errors = "Le champ code postal ne peut pas être vide.";
         }
         if (strlen($postalcode) > 5 || strlen($postalcode) < 5) {
-            $errors = "Code postal invalide. Veuillez entrer 5 chiffres. ";
+            $this->errors = "Code postal invalide. Veuillez entrer 5 chiffres. ";
         } else {
-            $errors = "Une erreur est survenue. Contactez l'admin à cet email : admin@metiscooking.fr ";
+            $this->errors = "Une erreur est survenue. Contactez l'admin à cet email : admin@metiscooking.fr ";
         }
     }
 
@@ -63,29 +59,28 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-
-
-
         $email = '';
         $postalcode = '';
-        $errors = [];
-        $success = [];
         $postalCodePattern = '/^([0-9]{5})$/';
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (isset($_POST['submit'])) {
-                $this->handlePostEmail($errors, $success, $_POST['email']);
+                $this->handlePostEmail($_POST['email']);
             }
 
             if (isset($_POST['postcode'])) {
-                $this->handlePostPostalCode($errors, $success, $_POST['postcode'], $postalCodePattern);
+                $this->handlePostPostalCode($_POST['postcode'], $postalCodePattern);
+            }
+
+            if (!($this->isEmpty($_POST))) {
+                $this->errors = "Tous les champs doivent être remplis";
             }
         }
 
-        return $this->twig->render('Home/index.html.twig', [
+        return $this->customRender('Home/index.html.twig', [
             'email' => $email,
-            'errors' => $errors,
-            'success' => $success,
+            'errors' => $this->errors,
+            'success' => $this->success,
             'postalcode' => $postalcode
         ]);
     }

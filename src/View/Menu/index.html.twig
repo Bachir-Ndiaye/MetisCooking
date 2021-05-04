@@ -11,6 +11,11 @@
 
 
 {% block content %}
+    {% if success != NULL %}
+        <div class="success">
+            <h1>{{ success }}</h1>
+        </div>
+    {% endif %}
     {% for i in 0..(cooker|length-1) %}
     <div class="card-cooker cc-{{ i }}">
         <img src="/assets/images/cuistots/chef-{{ i }}.jpg" alt="">
@@ -23,19 +28,19 @@
                     <p> <img src="/assets/images/flags/{{ menu[i].country }}.png" alt=""></p>
                     <p> | {{ menu[i].price }} € | </p>
                     <p> {{ random(1500,5000) }}kcal/100gr | </p>
-                    <p id="paniers"><i class="fas fa-shopping-cart"></i>+</p>
+                    <a href="/menu/traitement/{{ plats[i].menu }}"><p id="paniers"><i class="fas fa-shopping-cart"></i>+</p></a>
                 </div>
                 <div class="menu">
                     <div class="menu-wrap">
-                        <img src="/assets/images/dishdatabase/entrees/{{ entrees[i].link }}.jpg" alt="">
+                        <a href="/menu/singlemenu/{{plats[i].menu}}"><img src="/assets/images/dishdatabase/entrees/{{ entrees[i].link }}.jpg" alt=""></a>
                         <p>{{ entrees[i].dish }}</p>
                     </div>
                     <div class="menu-wrap">
-                        <img src="/assets/images/dishdatabase/plats/{{ plats[i].link }}.jpg" alt="">
+                        <a href="/menu/singlemenu/{{plats[i].menu}}"><img src="/assets/images/dishdatabase/plats/{{ plats[i].link }}.jpg" alt=""></a>
                         <p>{{ plats[i].dish }}</p>
                     </div>
                     <div class="menu-wrap">
-                        <img src="/assets/images/dishdatabase/desserts/{{ desserts[i].link }}.jpg" alt="">
+                        <a href="/menu/singlemenu/{{plats[i].menu}}"><img src="/assets/images/dishdatabase/desserts/{{ desserts[i].link }}.jpg" alt=""></a>
                         <p>{{ desserts[i].dish }}</p>
                     </div>
                     

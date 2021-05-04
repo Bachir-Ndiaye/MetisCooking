@@ -11,14 +11,18 @@
 	<div class="login_page">
 		<div id="contact">
 			<h1>Connectez-vous</h1>
+			<!--Display messages when user enters email address-->
 			<div class="box-msg">
-				{% if errors != NULL %}
-					{% for error in errors %}
-						<div class="alert">
-							<p>{{ error }}</p>
-						</div>
-					{% endfor %}
+				{% if success !=null %}
+					<div class="success">
+						<h1>{{ success }}</h1>
+					</div>
+				{% elseif errors !=null %}
+					<div class="alert">
+						<h1>{{ errors }}</h1>
+					</div>
 				{% endif %}
+
 			</div>
 			<form method="post" action ="/Login/login">
 				<p>

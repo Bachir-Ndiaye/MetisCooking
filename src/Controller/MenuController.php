@@ -38,7 +38,7 @@ class MenuController extends AbstractController
         $menuManager = new MenuManager();
         $menus = $menuManager->selectAll();
 
-        return $this->twig->render('Menu/index.html.twig', [
+        return $this->customRender('Menu/index.html.twig', [
          'dish' => $dishes,
          'cooker' => $cookers,
          'menu' => $menus,
@@ -68,12 +68,82 @@ class MenuController extends AbstractController
         $plats = $dishManager->selectOneDish(intval($singleMenu[$plat]));
         $desserts = $dishManager->selectOneDish(intval($singleMenu[$dessert]));
 
-        return $this->twig->render('Menu/singlemenu.html.twig', [
+        return $this->customRender('Menu/singlemenu.html.twig', [
             'menu' => $singleMenu,
             'entrees' => $entrees,
             'plats' => $plats,
             'desserts' => $desserts
 
         ]);
+    }
+
+    /**
+     * Récuperer le menu a mettre dans la base de données
+     */
+    public function traitement()
+    {
+        $myCommands = [];
+        $dishManager = new DishManager();
+
+        //Url traitement
+        $exploseUrl = (explode('/', $_SERVER['REQUEST_URI'])[3]);
+        $format = rawurldecode($exploseUrl);
+
+        //One single menu fetch
+        $singleMenu = $dishManager->selectOneMenu($format);
+
+        $_SESSION['command'][] = $singleMenu;
+        $myCommands[] = $_SESSION['command'];
+
+        $this->success = "Votre commande a bien été ajouté au panier !";
+
+        return $this->customRender('Menu/command.html.twig', [
+            'success' => $this->success,
+            'mycommands' => $myCommands
+        ]);
+    }
+
+    public function ajoutpanier()
+    {
+        $myCommands = [];
+        $commandStatus = $_SESSION['command-status'];
+        if (isset($_SESSION['command'])) {
+            $myCommands = $_SESSION['command'];
+        } else {
+            $this->errors = "Votre panier est vide pour le moment !";
+        }
+        return $this->customRender('Menu/ajoutpanier.html.twig', [
+            'mycommands' => $myCommands,
+            'commandstatus' => $commandStatus,
+            'errors' => $this->errors
+        ]);
+    }
+
+    public function confirm()
+    {
+
+        //mettre la partie de suivie de commande dès lors que l'utilisateur appuis sur confirmer commande
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            if (isset($_POST['confirm-command'])) {
+                $this->success = "Votre commande est prise en compte. Merci pour votre confiance";
+                $_SESSION['command-status'] = "Votre commande est entre de bonnes mains... Patience !";
+                unset($_SESSION['command']);
+                return $this->customRender('Home/index.html.twig', [
+                    'success' => $this->success
+                ]);
+            }
+        }
+        header("Location : home/index");
+    }
+
+    public function delete(int $id)
+    {
+                unset($_SESSION['command'][$id]);
+                $this->success = " Votre commande a été supprimé avec succès !";
+                $_SESSION['command'] = array_values($_SESSION['command']);
+
+            return $this->customRender('Home/index.html.twig', [
+                'success' => $this->success
+            ]);
     }
 }

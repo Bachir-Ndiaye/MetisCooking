@@ -3,8 +3,6 @@
 
 {% block title %}
     {{ parent() }} Accueil {{user.lastname}}
-
-    
 {% endblock %}
 
 {% block content %}
@@ -17,9 +15,9 @@
             </div>
         {% elseif errors != NULL %}
             <div class="alert">
-                <h>{{ errors }}</h1>
+                <h1>{{ errors }}</h1>
             </div>
-            {% elseif current_user.lastname is defined %}
+            {% elseif current_user is not defined %}
             <div class="success">
                 <h1>{{ session_destroy }}</h1>
             </div>

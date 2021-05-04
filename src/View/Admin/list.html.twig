@@ -1,12 +1,17 @@
 {% extends "layout.html.twig" %}
 
 
-
+{% block title %}
+	{{ parent() }} Admin
+{% endblock %}
 
 {% block content %}
 
-    <table>
-  <legend>Messages reçu</legend>
+
+
+    <div class="list-contact"> 
+      <table>
+  <h1>Messages reçu</h1>
   <thead>
     <tr>
       <th>Firstname</th>
@@ -30,5 +35,9 @@
 
   </tbody>
 </table>
+
+    </div>
+
+
 
 {% endblock %}

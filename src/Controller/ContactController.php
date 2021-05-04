@@ -8,32 +8,25 @@ class ContactController extends AbstractController
 {
     public function formulaire(): string
     {
-        $errors = [];
-
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            if (empty($_POST['firstname'])) {
-                $errors[] = "Veuillez indiquer votre prénom.";
-            }
-            if (empty($_POST['lastname'])) {
-                $errors[] = "Veuillez indiquer votre nom.";
+            if (!($this->isEmpty($_POST))) {
+                $this->errors = "Tous les champs doivent être remplis";
             }
 
-            if (empty($_POST['email'])) {
-                $errors[] = "Veuillez indiquer votre email .";
-            } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                $errors[] = "Adresse Email non valide";
+            if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                $this->errors = "Adresse Email non valide";
             }
 
-            if (empty($_POST['comment'])) {
-                $errors[] = "Veuillez entrer votre message";
-            } elseif (strlen($_POST['comment']) < 5) {
-                $errors[] = "Le message doit contenir plus de 5 caractères .";
+            if (strlen($_POST['comment']) < 5) {
+                $this->errors = "Le message doit contenir plus de 5 caractères .";
             }
 
-            if (empty($errors)) {
-                $success = "Merci pour votre message ! Il a bien été pris en compte.
+            if (empty($this->errors)) {
+                $this->success = "Merci pour votre message ! Il a bien été pris en compte.
                  Nous vous recontacterons rapidement.";
+
                 $data = array_map('trim', $_POST);
+
                 $firstname =  htmlentities($data['firstname']);
                 $lastname = htmlentities($data['lastname']);
                 $email = htmlentities($data['email']);
@@ -41,14 +34,14 @@ class ContactController extends AbstractController
 
                 $contactManager = new ContactManager();
                 $contactManager->insert($firstname, $lastname, $email, $comment);
-                return $this->twig->render('Home/index.html.twig', [
-                    'success' => $success
+                return $this->customRender('Home/index.html.twig', [
+                    'success' => $this->success
                 ]);
             }
         }
 
-        return $this->twig->render('Contact/form.html.twig', [
-            'errors' => $errors
+        return $this->customRender('Contact/form.html.twig', [
+            'errors' => $this->errors
         ]);
     }
 }
