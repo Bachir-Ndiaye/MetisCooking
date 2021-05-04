@@ -6,7 +6,6 @@
 
 namespace App\Controller;
 
-use Exception;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;

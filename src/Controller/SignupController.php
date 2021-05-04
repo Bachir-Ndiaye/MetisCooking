@@ -9,8 +9,6 @@ class SignupController extends AbstractController
 {
     public function signup(): string
     {
-        $errors = [];
-
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $data = array_map('trim', $_POST);
             $firstname =  htmlentities($data['firstname']);
@@ -18,28 +16,23 @@ class SignupController extends AbstractController
             $email = htmlentities($data['email']);
             $password = htmlentities($data['password']);
 
-            if (empty($_POST['firstname'])) {
-                $errors[] = "Veuillez indiquer votre prénom.";
-            }
-            if (empty($_POST['lastname'])) {
-                $errors[] = "Veuillez indiquer votre nom.";
+            if (!($this->isEmpty($data))) {
+                $this->errors = "Tous les champs doivent être remplis";
             }
             if (empty($_POST['email'])) {
-                $errors[] = "Veuillez indiquer votre email .";
+                $this->errors = "Veuillez indiquer votre email .";
             } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                $errors[] = "Adresse Email non valide";
-            }
-            if (empty($_POST['password'])) {
-                $errors[] = "Veuillez indiquer votre mot de passe.";
+                $this->errors = "Adresse Email non valide";
             }
 
-            if (empty($errors)) {
+
+            if (empty($this->errors)) {
                 $signupManager = new SignupManager();
                 $result = $signupManager->insert($firstname, $lastname, $email, $password);
                 if ($result == false) {
-                    $errors[] = "Cet email est déjà utilisé";
+                    $this->errors = "Cet email est déjà utilisé";
                 } else {
-                    $success = "vous êtes inscrit";
+                    $this->success = "vous êtes inscrit";
 
                     $loginManager = new LoginManager();
                     $user = $loginManager->verifLog($email, $password);
@@ -47,13 +40,13 @@ class SignupController extends AbstractController
                     header('Location : home/index');
 
                         return $this->customRender('Home/index.html.twig', [
-                            'success' => $success
+                            'success' => $this->success
                         ]);
                 }
             }
 
             return $this->twig->render('Signup/form.html.twig', [
-                'errors' => $errors
+                'errors' => $this->errors
             ]);
         }
 

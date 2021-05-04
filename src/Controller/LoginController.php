@@ -20,49 +20,46 @@ class LoginController extends AbstractController
 
     public function login(): string
     {
-        $errors = [];
-        $success = '';
-
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $data = array_map('trim', $_POST);
             $email = htmlentities($data['email']);
             $password = htmlentities($data['password']);
             if (empty($_POST['email'])) {
-                $errors[] = "Veuillez indiquer votre email .";
+                $this->errors = "Veuillez indiquer votre email .";
             } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                $errors[] = "Adresse Email non valide";
+                $this->errors = "Adresse Email non valide";
             }
             if (empty($_POST['password'])) {
-                $errors[] = "Veuillez indiquer votre mot de passe.";
+                $this->errors = "Veuillez indiquer votre mot de passe.";
             }
 
-            if (empty($errors)) {
+            if (empty($this->errors)) {
                 $loginManager = new LoginManager();
 
                 // $user = $verif
                 $user = $loginManager->verifLog($email, $password);
                 if ($user === -1) {
-                    $errors[] = "veuillez-vous inscrire";
+                    $this->errors = " Identifiants incorrects ! Veuillez-vous inscrire";
                 } else {
-                    $success = "vous êtes connecté";
+                    $this->success = "Vous êtes connecté";
 
                     $_SESSION['current_user'] = $user;
                     header('Location : home/index');
 
                         // Default User
                         return $this->customRender('Home/index.html.twig', [
-                            'success' => $success
+                            'success' => $this->success
                         ]);
                 }
             }
 
             return $this->twig->render('Login/form.html.twig', [
-                'errors' => $errors
+                'errors' => $this->errors
             ]);
         }
 
         return $this->twig->render('Login/form.html.twig', [
-            'errors' => $errors
+            'errors' => $this->errors
         ]);
     }
 }

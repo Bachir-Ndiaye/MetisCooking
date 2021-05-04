@@ -7,14 +7,18 @@
 
 {% block content %}
 <div class="contact_page">
+	<!--Display messages when user enters email address-->
 	<div class="box-msg">
-		{% if errors != NULL %}
-			{% for error in errors %}
-				<div class="alert">
-					<p>{{ error }}</p>
-				</div>
-			{% endfor %}
+		{% if success != NULL %}
+			<div class="success">
+				<h1>{{ success }}</h1>
+			</div>
+		{% elseif errors != NULL %}
+			<div class="alert">
+				<h1>{{ errors }}</h1>
+			</div>
 		{% endif %}
+
 	</div>
 
 	<div id="contact">
