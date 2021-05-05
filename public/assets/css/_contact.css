@@ -82,6 +82,7 @@ form p{
 }
 form{
   padding: 0 0 2rem 0;
+  text-align:center;
 }
 .champ {
   border: none;
@@ -165,7 +166,7 @@ th{
 
 td{
   text-align:center;
-  padding: 0 2rem;
+  padding: 0 .5rem;
   border-bottom: 3px solid var(--dark-marron);
 }
 
@@ -177,7 +178,7 @@ td{
 }
 
 .admin-top{
-  height : 100vh;
+
   padding-top : 150px;
   text-align:center;
 }

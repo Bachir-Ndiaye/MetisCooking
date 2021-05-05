@@ -134,7 +134,10 @@ class MenuController extends AbstractController
             $_SESSION['command-total'] = $total;
 
             $commandManager = new CommandManager();
-            $commandPassed = $commandManager->searchCommands();
+            //intval(($_SESSION['current_user']['id']))
+
+            $commandPassed = $commandManager->searchCommands($_SESSION['current_user']['id']);
+
 
             return $this->customRender('Menu/ajoutpanier.html.twig', [
                 'mycommands' => $myCommands,
@@ -157,13 +160,18 @@ class MenuController extends AbstractController
             if (isset($_POST['confirm-command'])) {
                 $this->success = "Votre commande est prise en compte. Merci pour votre confiance";
 
-                $_SESSION['command-status'] = "Votre commande est entre de bonnes mains... Patience !";
+                $commandNumber = $_SESSION['current_user']['id'] . "-" .
+                    rand(1000, 10000) . "-" . $_SESSION['current_user']['lastname'];
+
+                $_SESSION['command-status'] = "Votre commande " .
+                    $commandNumber . " est entre de bonnes mains... Patience !";
                 unset($_SESSION['command']);
 
                 $commandManager = new CommandManager();
                 $commandManager->insert(
                     $_SESSION['command-total'],
-                    intval($_SESSION['current_user']['id'])
+                    intval($_SESSION['current_user']['id']),
+                    $commandNumber
                 );
 
                 return $this->customRender('Home/index.html.twig', [

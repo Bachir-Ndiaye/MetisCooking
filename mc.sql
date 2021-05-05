@@ -39,9 +39,7 @@ CREATE TABLE `users` (
     `rib`  VARCHAR(255) ,
     `payment_method` VARCHAR(255) ,
     `role_id` int,
-    `commandorder_id` int,
-    FOREIGN KEY (role_id) REFERENCES role(id),
-    FOREIGN KEY (commandorder_id) REFERENCES commandorder(id)
+    FOREIGN KEY (role_id) REFERENCES role(id)
 );
 
 CREATE TABLE `ingredients` (
@@ -97,6 +95,7 @@ CREATE TABLE `commandorder` (
     `created_at` DATETIME ,
     `user_id` int,
     `dish_id` int,
+    `command_number` VARCHAR(255),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (dish_id) REFERENCES dishes(id)
 );

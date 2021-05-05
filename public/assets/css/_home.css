@@ -22,12 +22,14 @@
   border-radius: 20px;
   text-decoration: none;
   color: white;
+  font-size: x-large;
 }
 
 .post-head-text {
   padding: 2rem;
   margin: auto;
   text-align: center;
+  font-size: xx-large;
 }
 .post-head-text p:nth-child(1) {
   padding-top: 2rem;
@@ -80,6 +82,9 @@
   max-width: 250px;
   margin: auto;
   text-align: center;
+}
+.how-it-works .hw-steps p {
+  font-size: large;
 }
 .how-it-works .hw-steps img {
   height: 100px;
@@ -211,7 +216,7 @@
   color: red;
 }
 .card-cooker .card-menu .details-menu p {
-  font-size: x-large;
+  font-size: medium;
   padding-right: 0.3rem;
   margin-bottom: 0.5rem;
 }
@@ -358,20 +363,8 @@
 
 .box-command {
   padding-bottom: 1rem;
-  height: 100vh;
   padding-top: 115px;
   text-align: center;
-}
-.box-command table {
-  display: flex;
-  justify-content: center;
-}
-.box-command table th {
-  padding: 0 6rem;
-  font-size: xx-large;
-}
-.box-command table td {
-  padding: 0 8rem;
 }
 .box-command .box-menu {
   display: flex;
@@ -381,42 +374,73 @@
   display: flex;
   justify-content: center;
 }
-.box-command .confirm-command form input {
-  background-color: var(--dark-marron);
-  padding: 0.5rem 0.75rem;
-  color: var(--light-marron);
-  border-radius: 10px;
-  transition: 0.4s;
-}
-.box-command .confirm-command form input:hover {
-  color: var(--dark-green);
-  background-color: var(--light-marron);
-}
 
 .container-add-panier {
+  padding-top: 4rem;
   height: max-content;
+  width: 50%;
+  margin: auto;
+}
+.container-add-panier .confirm-command {
+  text-align: center;
+}
+.container-add-panier .confirm-command form input {
+  font-size: x-large;
+  font-weight: bold;
+}
+.container-add-panier .total th {
+  font-size: x-large;
+  background: var(--black);
+  color: var(--light-marron);
 }
 .container-add-panier .serveur {
   position: absolute;
-  padding-top: 15rem;
+  padding-top: 50rem;
+  margin-left: -41rem;
 }
 .container-add-panier .serveur img {
   height: 600px;
+  height: 600px;
 }
 .container-add-panier .command-passed {
-  width: 50%;
   padding-top: 10rem;
-  margin: 0 0 0 25rem;
 }
 .container-add-panier .command-passed .box-ant {
   border-bottom: 3px solid var(--black);
-  margin: 2rem 0;
+  margin: 4rem 0;
 }
 .container-add-panier .command-passed .box-ant .fas {
   color: red;
 }
+.container-add-panier .command-passed h2 {
+  font-size: 20px;
+}
 .container-add-panier .command-passed h1 {
   color: var(--dark-marron);
+  text-align: center;
+}
+
+.box-verif {
+  height: 100vh;
+}
+.box-verif .success {
+  display: flex;
+  justify-content: center;
+}
+.box-verif .success i {
+  margin: auto 0;
+  font-size: xxx-large;
+  color: var(--dark-green);
+  padding-right: 1rem;
+}
+
+/*============================
+GLOBAL MEDIA QUERIES - <490px
+ ============================*/
+@media all and (min-width: 490px) {
+  .serveur {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=_home.css.map */
