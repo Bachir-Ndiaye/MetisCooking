@@ -178,10 +178,19 @@ td{
 
 .admin-top{
   height : 100vh;
-  display: flex;
-  justify-content:center;
-  text-align: center;
+  padding-top : 150px;
+  text-align:center;
 }
+.admin-top ul li{
+  list-style-type: none;
+}
+.admin-top a{
+  text-decoration: none;
+  font-size : xxx-large;
+  color : var(--dark-marron);
+}
+
+
 .admin-top h1{
   margin: auto;
 }

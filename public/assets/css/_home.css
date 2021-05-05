@@ -294,8 +294,8 @@
 }
 .main-menu .order .number-order {
   display: flex;
-  justify-content: end;
-  padding-top: 6rem;
+  justify-content: center;
+  padding-bottom: 4rem;
   width: 80%;
   margin: auto;
 }
@@ -303,6 +303,7 @@
   background-color: var(--dark-marron);
   color: var(--white);
   padding: 0.25rem 0.85rem;
+  font-size: xx-large;
 }
 .main-menu .order .number-order p:nth-child(2) {
   border: 1px solid var(--black);
@@ -319,9 +320,10 @@
 }
 .main-menu .top-3 .top-card {
   display: inline-block;
-  max-width: 200px;
-  max-height: 350px;
-  padding: 0 2rem;
+  max-width: 300px;
+  max-height: 500px;
+  padding: 2rem;
+  margin: 0 3rem;
 }
 .main-menu .top-3 .top-card p {
   color: var(--dark-green);
@@ -329,22 +331,11 @@
   padding-top: 0.5rem;
 }
 .main-menu .top-3 .top-card img {
-  height: 150px;
-  width: 150px;
+  height: 250px;
+  width: 250px;
   object-fit: cover;
   border-radius: 50%;
   border: 8px solid var(--dark-green);
-}
-.main-menu .epd {
-  text-align: center;
-}
-.main-menu .epd .box-category {
-  max-width: 250px;
-  max-height: 350px;
-  margin: auto;
-  text-align: center;
-  display: inline-block;
-  padding: 2rem 0;
 }
 
 /*=================
@@ -403,8 +394,29 @@
 }
 
 .container-add-panier {
-  height: 80vh;
-  background-color: var(--white);
+  height: max-content;
+}
+.container-add-panier .serveur {
+  position: absolute;
+  padding-top: 15rem;
+}
+.container-add-panier .serveur img {
+  height: 600px;
+}
+.container-add-panier .command-passed {
+  width: 50%;
+  padding-top: 10rem;
+  margin: 0 0 0 25rem;
+}
+.container-add-panier .command-passed .box-ant {
+  border-bottom: 3px solid var(--black);
+  margin: 2rem 0;
+}
+.container-add-panier .command-passed .box-ant .fas {
+  color: red;
+}
+.container-add-panier .command-passed h1 {
+  color: var(--dark-marron);
 }
 
 /*# sourceMappingURL=_home.css.map */

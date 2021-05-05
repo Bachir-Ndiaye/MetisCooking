@@ -9,48 +9,41 @@
          <div class="back-menu">
              <a href="/menu/cookers"><i class='fas fa-reply'></i></a>
          </div>
+
+         <div class="order">
+
+             <div class="number-order">
+                 <p id="menu-price">Ce menu est à : {{menu.price}} €</p>
+             </div>
+         </div>
          <div class="singlemenu">
 
              <!--Top 3 ideas -->
              <div class="top-3">
                  <div class="top-card">
-                     <img src="/assets/images/singlemenu/bio.jpg">
-                     <p>Bio</p>
+                     <img src="/assets/images/dishdatabase/entrees/{{ entrees.image_link }}.jpg" alt="">
+                     <div class="box-category">
+                         <h1>{{ entrees.name }}</h1>
+                         <p>{{ entrees.description }}</p>
+                     </div>
                  </div>
                  <div class="top-card">
-                     <img src="/assets/images/singlemenu/rapportQP.png">
-                     <p>Qualité / Prix</p>
+                     <img src="/assets/images/dishdatabase/plats/{{ plats.image_link }}.jpg" alt="">
+                     <div class="box-category">
+                         <h1>{{ plats.name }}</h1>
+                         <p>{{ plats.description }}</p>
+                     </div>
                  </div>
                  <div class="top-card">
-                     <img src="/assets/images/singlemenu/satisfait.jpg">
-                     <p>Garanti</p>
-                 </div>
-             </div>
-
-             <!--EPD details-->
-             <div class="epd">
-                 <div class="box-category">
-                     <h1>{{ entrees.name }}</h1>
-                     <p>{{ entrees.description }}</p>
-                 </div>
-                 <div class="box-category">
-                     <h1>{{ plats.name }}</h1>
-                     <p>{{ plats.description }}</p>
-                 </div>
-                 <div class="box-category">
-                     <h1>{{ desserts.name }}</h1>
-                     <p>{{desserts.description}}</p>
+                     <img src="/assets/images/dishdatabase/desserts/{{ desserts.image_link }}.jpg" alt="">
+                     <div class="box-category">
+                         <h1>{{ desserts.name }}</h1>
+                         <p>{{desserts.description}}</p>
+                     </div>
                  </div>
              </div>
 
          </div>
-         <div class="order">
-         
-             <div class="number-order">
-                <p id="menu-price">{{menu.price}} €</p>
-                 <p><span id="minus">-</span> 1 <span id="plus">+</span> </p>
-                 <p id="this-menu">Commandez ce menu</p>
-             </div>
-         </div>
+
      </div>
 {% endblock %}

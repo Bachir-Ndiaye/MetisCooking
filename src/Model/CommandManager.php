@@ -6,13 +6,12 @@ class CommandManager extends AbstractManager
 {
     public const TABLE = 'commandorder';
 
-    public function insert($amount, $createdAt, $userId): string
+    public function insert($amount, $userId): string
     {
         $query = "INSERT INTO " . self::TABLE . " (amount, created_at, user_id)
-                        VALUES (:amount, :createdAt, :userId);";
+                        VALUES (:amount, NOW(), :userId);";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':amount', $amount, \PDO::PARAM_INT);
-        $statement->bindValue(':createdAt', $createdAt, \PDO::PARAM_STR);
         $statement->bindValue(':userId', $userId, \PDO::PARAM_INT);
         //$statement->bindValue(':dishId', $dishId, \PDO::PARAM_INT);
 
@@ -24,7 +23,12 @@ class CommandManager extends AbstractManager
     public function searchUser()
     {
         $query = 'SELECT * from users JOIN commandorder ON commandorder.user_id=users.id';
+        return $this->pdo->query($query)->fetchAll();
+    }
 
+    public function searchCommands()
+    {
+        $query = 'SELECT * from commandorder JOIN users ON commandorder.user_id=users.id';
         return $this->pdo->query($query)->fetchAll();
     }
 }

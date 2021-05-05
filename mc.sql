@@ -39,7 +39,9 @@ CREATE TABLE `users` (
     `rib`  VARCHAR(255) ,
     `payment_method` VARCHAR(255) ,
     `role_id` int,
-    FOREIGN KEY (role_id) REFERENCES role(id)
+    `commandorder_id` int,
+    FOREIGN KEY (role_id) REFERENCES role(id),
+    FOREIGN KEY (commandorder_id) REFERENCES commandorder(id)
 );
 
 CREATE TABLE `ingredients` (
@@ -200,7 +202,12 @@ INSERT INTO `role` (`name`) VALUES ("admin"),
                                     ("utilisateur");
 
 -- Create an admin for test
-INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `role_id`) VALUES ("admin", "admin", "admin@metiscooking.fr", "admin", "1");
+INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `role_id`) VALUES ("admin", "admin", "admin@metiscooking.fr", "admin", "1"),
+                                                                                     ("Lucas", "Du69", "lucas@lucas.fr", "lucas", "1"),
+                                                                                     ("Said", "Du99", "said@said.fr", "said", "1"),
+                                                                                     ("Marcel", "Du01", "marcel@marcel.fr", "marcel", "1"),
+                                                                                     ("John", "Doe", "user@metiscooking.fr", "1234", "3");
+
 
 
 -- Show tables
