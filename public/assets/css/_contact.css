@@ -159,6 +159,10 @@ List contact
   width: 80%;
 }
 
+.list-contact table{
+  margin: 0 auto;
+}
+
 th{
   border: 2px solid black;
   padding: .25rem .5rem;

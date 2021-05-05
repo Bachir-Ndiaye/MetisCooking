@@ -434,8 +434,18 @@
   padding-right: 1rem;
 }
 
-/*============================
-GLOBAL MEDIA QUERIES - <490px
- ============================*/
+.admin {
+  height: 100vh;
+  padding-top: 150px;
+  text-align: center;
+  margin: auto;
+}
+.admin .links {
+  display: grid;
+  grid-gap: 1rem;
+}
+.admin .links a {
+  text-decoration: none;
+}
 
 /*# sourceMappingURL=_home.css.map */

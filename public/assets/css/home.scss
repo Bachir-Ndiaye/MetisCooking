@@ -462,11 +462,16 @@
   }
 }
 
-/*============================
-GLOBAL MEDIA QUERIES - <490px
- ============================*/
-
-@media all and (min-width: 490px) {
-
+.admin{
+  height: 100vh;
+ padding-top: 150px;
+  text-align:center;
+  margin:auto;
+  .links{
+    display: grid;
+    grid-gap : 1rem;
+    a{
+      text-decoration:none;
+    }
+  }
 }
-

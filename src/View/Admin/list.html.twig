@@ -6,36 +6,12 @@
 {% endblock %}
 
 {% block content %}
-
-    <div class="list-contact"> 
-      <table>
-  <h1>Messages reçu</h1>
-  <thead>
-    <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Email</th>
-      <th>Comment</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-{% for person in persons %}
-
-    <tr>
-      <td>{{ person.firstname }}</td>
-      <td>{{ person.lastname }}</td>
-      <td>{{ person.email }}</td>
-      <td>{{ person.comment }}</td>
-    </tr>
-
-{% endfor %}
-
-  </tbody>
-</table>
-
+    <div class="admin">
+        <h1>Bienvenue dans l'espace admin</h1>
+        <div class="links">
+            <h2><a href="/admin/contacts">Les contacts</a></h2>
+            <h2><a href="/admin/commands/">Les commandes</a></h2>
+        </div>
     </div>
-
-
 
 {% endblock %}
