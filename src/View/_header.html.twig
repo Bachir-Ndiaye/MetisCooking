@@ -59,13 +59,12 @@
             <!-- Si user defini => si nom défini => on teste role id -->
             {% if current_user is defined and current_user.role_id == "1" %}
                 <a id="login" class="btn" href="/admin/admin"><span id="connect">Espace - {{current_user.firstname|upper}}</span></a>
-                <a id="panier" class="btn" href="/login/destroy">Se déconnecter <i class="fas fa-sign-out-alt"></i></span></a>
+                <a id="panier" class="btn" href="/login/destroy"><span>Se déconnecter <i class="fas fa-sign-out-alt"></i></span></a>
                 {% elseif current_user is defined and current_user.role_id != "1" %}
                 <a id="login" class="btn" href="/login/destroy"><span id="connect">{{current_user.firstname|upper}} - Se déconnecter<i class="fas fa-sign-out-alt"></i></span></a>
                 <a id="panier" class="btn" href="/menu/ajoutpanier"><i class="fas fa-shopping-cart"></i><span id="shopping">Mes commandes</span></a>
                 {% elseif current_user is not defined %}
                 <a id="login" class="btn" href="/login/login"><i class="fas fa-user"></i><span id="connect">Se connecter</span></a>
-                <a id="panier" class="btn" href="#"><i class="fas fa-shopping-cart"></i><span id="shopping">Mes commandes</span></a>
             {% endif %}
             
             </div>
