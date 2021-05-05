@@ -13,7 +13,7 @@ class CommandManager extends AbstractManager
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':amount', $amount, \PDO::PARAM_INT);
         $statement->bindValue(':userId', $userId, \PDO::PARAM_INT);
-        $statement->bindValue(':command_number', $commandNumber, \PDO::PARAM_STR);
+        $statement->bindValue(':commandNumber', $commandNumber, \PDO::PARAM_STR);
 
         $statement->execute();
 
