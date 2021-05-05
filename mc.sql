@@ -95,6 +95,7 @@ CREATE TABLE `commandorder` (
     `created_at` DATETIME ,
     `user_id` int,
     `dish_id` int,
+    `command_number` VARCHAR(255),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (dish_id) REFERENCES dishes(id)
 );
@@ -200,7 +201,13 @@ INSERT INTO `role` (`name`) VALUES ("admin"),
                                     ("utilisateur");
 
 -- Create an admin for test
-INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `role_id`) VALUES ("admin", "admin", "admin@metiscooking.fr", "admin", "1");
+INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `role_id`) VALUES ("admin", "admin", "admin@metiscooking.fr", "admin", "1"),
+                                                                                     ("Lucas", "Du69", "lucas@lucas.fr", "lucas", "1"),
+                                                                                     ("Said", "Du99", "said@said.fr", "said", "1"),
+                                                                                     ("Marcel", "Du01", "marcel@marcel.fr", "marcel", "1"),
+                                                                                     ("John", "Doe", "user@metiscooking.fr", "1234", "3");
+
+
 
 
 -- Show tables

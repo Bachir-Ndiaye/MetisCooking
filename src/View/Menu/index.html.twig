@@ -28,7 +28,13 @@
                     <p> <img src="/assets/images/flags/{{ menu[i].country }}.png" alt=""></p>
                     <p> | {{ menu[i].price }} € | </p>
                     <p> {{ random(1500,5000) }}kcal/100gr | </p>
+                    {% if current_user is defined and status is empty %}
                     <a href="/menu/traitement/{{ plats[i].menu }}"><p id="paniers"><i class="fas fa-shopping-cart"></i>+</p></a>
+                    {% elseif current_user is not defined %}
+                        <p id="paniers" onclick='notConnectetd()'><i class="fas fa-shopping-cart"></i>+</p>
+                    {% elseif status is not empty %}
+                        <p id="paniers" onclick='hasCommanded()'><i class="fas fa-shopping-cart"></i>+</p>
+                    {% endif %}
                 </div>
                 <div class="menu">
                     <div class="menu-wrap">
@@ -49,4 +55,15 @@
     </div>
     {% endfor %}
 
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">function notConnectetd() {
+    alert('Merci de vous connecter ou de vous inscrire pour passer une commande!');
+}
+
+    function hasCommanded(){
+    alert('Vous avez déjà une commande en cours ! Vous ne pouvez plus commander !');
+}
+</script>
 {% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\AbstractManager;
+use App\Model\CommandManager;
 use App\Model\CookersManager;
 use App\Model\DishManager;
 use App\Model\MenuManager;
@@ -37,16 +38,18 @@ class MenuController extends AbstractController
          */
         $menuManager = new MenuManager();
         $menus = $menuManager->selectAll();
-
+        $status = $_SESSION['command-status'];
         return $this->customRender('Menu/index.html.twig', [
-         'dish' => $dishes,
-         'cooker' => $cookers,
-         'menu' => $menus,
-         'entrees' => $entrees,
-         'plats' => $plats,
-         'desserts' => $desserts
+            'dish' => $dishes,
+            'cooker' => $cookers,
+            'menu' => $menus,
+            'entrees' => $entrees,
+            'plats' => $plats,
+            'desserts' => $desserts,
+            'status' => $status
         ]);
     }
+
 
     public function singlemenu(): string
     {
@@ -82,68 +85,120 @@ class MenuController extends AbstractController
      */
     public function traitement()
     {
-        $myCommands = [];
-        $dishManager = new DishManager();
+        if (isset($_SESSION['current_user'])) {
+            $myCommands = [];
+            $dishManager = new DishManager();
 
-        //Url traitement
-        $exploseUrl = (explode('/', $_SERVER['REQUEST_URI'])[3]);
-        $format = rawurldecode($exploseUrl);
+            //Url traitement
+            $exploseUrl = (explode('/', $_SERVER['REQUEST_URI'])[3]);
+            $format = rawurldecode($exploseUrl);
 
-        //One single menu fetch
-        $singleMenu = $dishManager->selectOneMenu($format);
+            //One single menu fetch
+            $singleMenu = $dishManager->selectOneMenu($format);
 
-        $_SESSION['command'][] = $singleMenu;
-        $myCommands[] = $_SESSION['command'];
+            $_SESSION['command'][] = $singleMenu;
+            $myCommands[] = $_SESSION['command'];
 
-        $this->success = "Votre commande a bien été ajouté au panier !";
+            $this->success = "Votre commande a bien été ajouté au panier !";
 
-        return $this->customRender('Menu/command.html.twig', [
-            'success' => $this->success,
-            'mycommands' => $myCommands
-        ]);
+            return $this->customRender('Menu/command.html.twig', [
+                'success' => $this->success,
+                'mycommands' => $myCommands
+            ]);
+        } else {
+            $this->errors = "Accès interdit ! Veuillez vous connecter ou vous inscrire";
+            return $this->twig->render('Home/index.html.twig', [
+                'errors' => $this->errors
+            ]);
+        }
     }
 
     public function ajoutpanier()
     {
-        $myCommands = [];
-        $commandStatus = $_SESSION['command-status'];
-        if (isset($_SESSION['command'])) {
-            $myCommands = $_SESSION['command'];
+        if (isset($_SESSION['current_user'])) {
+            $myCommands = [];
+            $total = 0;
+
+            $commandStatus = $_SESSION['command-status'];
+            if (isset($_SESSION['command'])) {
+                $myCommands = $_SESSION['command'];
+            } elseif (!(isset($_SESSION['command-status']))) {
+                $this->errors = "Votre panier est vide pour le moment !";
+            }
+
+            foreach ($myCommands as $command) {
+                $total += intval($command['price']);
+            }
+
+            $_SESSION['command-total'] = $total;
+
+            $commandManager = new CommandManager();
+
+            $commandPassed = $commandManager->searchCommands($_SESSION['current_user']['id']);
+
+
+            return $this->customRender('Menu/ajoutpanier.html.twig', [
+                'mycommands' => $myCommands,
+                'commandstatus' => $commandStatus,
+                'errors' => $this->errors,
+                'total' => $total,
+                'commandspassed' => $commandPassed
+            ]);
         } else {
-            $this->errors = "Votre panier est vide pour le moment !";
+            $this->errors = "Accès interdit ! Veuillez vous connecter ou vous inscrire";
+            return $this->twig->render('Home/index.html.twig', [
+                'errors' => $this->errors
+            ]);
         }
-        return $this->customRender('Menu/ajoutpanier.html.twig', [
-            'mycommands' => $myCommands,
-            'commandstatus' => $commandStatus,
-            'errors' => $this->errors
-        ]);
     }
 
     public function confirm()
     {
-
-        //mettre la partie de suivie de commande dès lors que l'utilisateur appuis sur confirmer commande
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (isset($_POST['confirm-command'])) {
                 $this->success = "Votre commande est prise en compte. Merci pour votre confiance";
-                $_SESSION['command-status'] = "Votre commande est entre de bonnes mains... Patience !";
+
+                $commandNumber = $_SESSION['current_user']['id'] . "-" .
+                    rand(1000, 10000) . "-" . $_SESSION['current_user']['lastname'];
+
+                $_SESSION['command-status'] = "Votre commande " .
+                    $commandNumber . " est entre de bonnes mains... Patience !";
                 unset($_SESSION['command']);
+
+                $commandManager = new CommandManager();
+                $commandManager->insert(
+                    $_SESSION['command-total'],
+                    intval($_SESSION['current_user']['id']),
+                    $commandNumber
+                );
+
                 return $this->customRender('Home/index.html.twig', [
                     'success' => $this->success
                 ]);
             }
+        } else {
+            $this->errors = "Accès interdit ! Veuillez vous connecter ou vous inscrire";
+            return $this->twig->render('Home/index.html.twig', [
+                'errors' => $this->errors
+            ]);
         }
-        header("Location : home/index");
     }
 
     public function delete(int $id)
     {
-                unset($_SESSION['command'][$id]);
-                $this->success = " Votre commande a été supprimé avec succès !";
-                $_SESSION['command'] = array_values($_SESSION['command']);
+        if (isset($_SESSION['current_user'])) {
+            unset($_SESSION['command'][$id]);
+            $this->success = " Votre commande a été supprimé avec succès !";
+            $_SESSION['command'] = array_values($_SESSION['command']);
 
             return $this->customRender('Home/index.html.twig', [
                 'success' => $this->success
             ]);
+        } else {
+            $this->errors = "Accès interdit ! Veuillez vous connecter ou vous inscrire";
+            return $this->twig->render('Home/index.html.twig', [
+                'errors' => $this->errors
+            ]);
+        }
     }
 }

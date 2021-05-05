@@ -22,12 +22,14 @@
   border-radius: 20px;
   text-decoration: none;
   color: white;
+  font-size: x-large;
 }
 
 .post-head-text {
   padding: 2rem;
   margin: auto;
   text-align: center;
+  font-size: xx-large;
 }
 .post-head-text p:nth-child(1) {
   padding-top: 2rem;
@@ -80,6 +82,9 @@
   max-width: 250px;
   margin: auto;
   text-align: center;
+}
+.how-it-works .hw-steps p {
+  font-size: large;
 }
 .how-it-works .hw-steps img {
   height: 100px;
@@ -211,7 +216,7 @@
   color: red;
 }
 .card-cooker .card-menu .details-menu p {
-  font-size: x-large;
+  font-size: medium;
   padding-right: 0.3rem;
   margin-bottom: 0.5rem;
 }
@@ -294,8 +299,8 @@
 }
 .main-menu .order .number-order {
   display: flex;
-  justify-content: end;
-  padding-top: 6rem;
+  justify-content: center;
+  padding-bottom: 4rem;
   width: 80%;
   margin: auto;
 }
@@ -303,6 +308,7 @@
   background-color: var(--dark-marron);
   color: var(--white);
   padding: 0.25rem 0.85rem;
+  font-size: xx-large;
 }
 .main-menu .order .number-order p:nth-child(2) {
   border: 1px solid var(--black);
@@ -319,9 +325,10 @@
 }
 .main-menu .top-3 .top-card {
   display: inline-block;
-  max-width: 200px;
-  max-height: 350px;
-  padding: 0 2rem;
+  max-width: 300px;
+  max-height: 500px;
+  padding: 2rem;
+  margin: 0 3rem;
 }
 .main-menu .top-3 .top-card p {
   color: var(--dark-green);
@@ -329,22 +336,11 @@
   padding-top: 0.5rem;
 }
 .main-menu .top-3 .top-card img {
-  height: 150px;
-  width: 150px;
+  height: 250px;
+  width: 250px;
   object-fit: cover;
   border-radius: 50%;
   border: 8px solid var(--dark-green);
-}
-.main-menu .epd {
-  text-align: center;
-}
-.main-menu .epd .box-category {
-  max-width: 250px;
-  max-height: 350px;
-  margin: auto;
-  text-align: center;
-  display: inline-block;
-  padding: 2rem 0;
 }
 
 /*=================
@@ -359,7 +355,7 @@
   padding: 0 1rem;
   font-size: xx-large;
 }
-.command-status .status p {
+.command-status .status h1 {
   margin: auto 0;
   color: var(--dark-green);
   font-weight: bold;
@@ -367,20 +363,8 @@
 
 .box-command {
   padding-bottom: 1rem;
-  height: 100vh;
   padding-top: 115px;
   text-align: center;
-}
-.box-command table {
-  display: flex;
-  justify-content: center;
-}
-.box-command table th {
-  padding: 0 6rem;
-  font-size: xx-large;
-}
-.box-command table td {
-  padding: 0 8rem;
 }
 .box-command .box-menu {
   display: flex;
@@ -390,16 +374,69 @@
   display: flex;
   justify-content: center;
 }
-.box-command .confirm-command form input {
-  background-color: var(--dark-marron);
-  padding: 0.5rem 0.75rem;
-  color: var(--light-marron);
-  border-radius: 10px;
-  transition: 0.4s;
+
+.container-add-panier {
+  padding-top: 4rem;
+  height: 100vw;
+  width: 50%;
+  margin: auto;
 }
-.box-command .confirm-command form input:hover {
+.container-add-panier .confirm-command {
+  text-align: center;
+}
+.container-add-panier .confirm-command form input {
+  font-size: x-large;
+  font-weight: bold;
+}
+.container-add-panier .total th {
+  font-size: x-large;
+  background: var(--black);
+  color: var(--light-marron);
+}
+.container-add-panier .command-passed {
+  padding-top: 10rem;
+}
+.container-add-panier .command-passed .box-ant {
+  border-bottom: 3px solid var(--black);
+  margin: 4rem 0;
+}
+.container-add-panier .command-passed .box-ant .fas {
+  color: red;
+}
+.container-add-panier .command-passed h2 {
+  font-size: 20px;
+}
+.container-add-panier .command-passed h1 {
+  color: var(--dark-marron);
+  text-align: center;
+}
+
+.box-verif {
+  height: 100vh;
+}
+.box-verif .success {
+  display: flex;
+  justify-content: center;
+}
+.box-verif .success i {
+  margin: auto 0;
+  font-size: xxx-large;
   color: var(--dark-green);
-  background-color: var(--light-marron);
+  padding-right: 1rem;
+}
+
+.admin {
+  height: 100vh;
+  padding-top: 150px;
+  text-align: center;
+  margin: auto;
+}
+.admin .links {
+  display: grid;
+  grid-gap: 1rem;
+}
+.admin .links a {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=_home.css.map */

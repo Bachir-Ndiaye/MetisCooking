@@ -82,6 +82,7 @@ form p{
 }
 form{
   padding: 0 0 2rem 0;
+  text-align:center;
 }
 .champ {
   border: none;
@@ -153,11 +154,48 @@ List contact
 ============*/
 .list-contact{
   padding-top: 15rem;
-  height: 100vh;
   margin: auto;
+  height: 100vh;
   width: 80%;
 }
 
+.list-contact table{
+  margin: 0 auto;
+}
+
+th{
+  border: 2px solid black;
+  padding: .25rem .5rem;
+}
+
+td{
+  text-align:center;
+  padding: 0 .5rem;
+  border-bottom: 3px solid var(--dark-marron);
+}
+
+
 .list-contact h1{
   padding-bottom: 2rem;
+  text-align: center;
+  color : var(--dark-marron);
+}
+
+.admin-top{
+
+  padding-top : 150px;
+  text-align:center;
+}
+.admin-top ul li{
+  list-style-type: none;
+}
+.admin-top a{
+  text-decoration: none;
+  font-size : xxx-large;
+  color : var(--dark-marron);
+}
+
+
+.admin-top h1{
+  margin: auto;
 }
