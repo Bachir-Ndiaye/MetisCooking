@@ -209,6 +209,7 @@ INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `role_id`) VA
 
 
 
+
 -- Show tables
 SELECT * FROM `cookers`;
 SELECT * FROM `menus`;

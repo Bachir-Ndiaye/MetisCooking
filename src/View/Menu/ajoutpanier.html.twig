@@ -5,11 +5,13 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="container-add-panier">
 
 <div class="serveur">
     <img src="/assets/images/background-images/serveur.svg" alt="">
 </div>
+
     <div class="box-msg">
         {% if success != NULL %}
             <div class="success">
@@ -18,6 +20,7 @@
         {% elseif errors != NULL %}
             <div class="alert">
                 <p>{{ errors }}</p>
+
             </div>
         {% endif %}
 
@@ -27,6 +30,7 @@
         {% if commandstatus is defined and commandstatus is not null %}
             <div class="status">
                 <i class="fas fa-info-circle"></i>
+
                 <h1>{{ commandstatus }}</h1>
             </div>
         {% endif %}
@@ -72,6 +76,7 @@
                 <input type="submit" name="confirm-command" value="Valider sa commande !">
             </form>
         </div>
+
     {% endif %}
 
 
@@ -101,5 +106,7 @@
 </div>
 
 
+
+</div>
 
 {% endblock %}

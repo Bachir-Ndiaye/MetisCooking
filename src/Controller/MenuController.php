@@ -38,7 +38,6 @@ class MenuController extends AbstractController
          */
         $menuManager = new MenuManager();
         $menus = $menuManager->selectAll();
-
         $status = $_SESSION['command-status'];
         return $this->customRender('Menu/index.html.twig', [
             'dish' => $dishes,

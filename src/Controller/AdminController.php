@@ -66,7 +66,6 @@ class AdminController extends AbstractController
         $commandManager = new CommandManager();
         $commands = $commandManager->selectAll();
 
-
         $users = $commandManager->searchUser();
         if (isset($_SESSION['current_user']) && $_SESSION['current_user']['role_id'] == 1) {
             return $this->customRender(
