@@ -401,7 +401,7 @@
 
 .container-add-panier{
   padding-top : 4rem;
-  height : max-content;
+  height : 100vw;
   width: 50%;
   margin: auto;
   .confirm-command{
@@ -420,15 +420,7 @@
     color: var(--light-marron);
   }
   }
-  .serveur{
-    position: absolute;
-    padding-top: 50rem;
-    margin-left: -41rem;
- img{
-   height: 600px;
-   height: 600px;
- }
-  }
+
   .command-passed{
     padding-top: 10rem;
     .box-ant{

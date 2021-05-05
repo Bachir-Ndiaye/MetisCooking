@@ -133,7 +133,6 @@ class MenuController extends AbstractController
             $_SESSION['command-total'] = $total;
 
             $commandManager = new CommandManager();
-            //intval(($_SESSION['current_user']['id']))
 
             $commandPassed = $commandManager->searchCommands($_SESSION['current_user']['id']);
 

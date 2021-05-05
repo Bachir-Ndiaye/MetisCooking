@@ -8,10 +8,6 @@
 
 <div class="container-add-panier">
 
-<div class="serveur">
-    <img src="/assets/images/background-images/serveur.svg" alt="">
-</div>
-
     <div class="box-msg">
         {% if success != NULL %}
             <div class="success">
@@ -46,6 +42,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Menu(s)</th>
                 <th scope="col">Prix (€)</th>
+                <th scope="col">Supprimer</th>
             </tr>
             </thead>
             {% for command in mycommands %}
@@ -53,7 +50,12 @@
             <tr>
                 <th scope="row">{{ loop.index }}</th>
                 <th>{{ command.name }}</th>
-                <th>{{ command.price }}</th>
+                <th>{{ command.price }} </th>
+                <th><div class="delete-section">
+                        <form action="/menu/delete/{{ loop.index0 }}" method="post">
+                            <button>Suprimer</button>
+                        </form>
+                    </div></th>
             </tr>
             </tbody>
             {% endfor %}
@@ -77,30 +79,31 @@
             </form>
         </div>
 
+
+    {% endif %}
+
+    {% if commandspassed != null %}
+    <div class="command-passed">
+        <h1>Mes commandes antérieures</h1>
+        {% for commandpassed in commandspassed %}
+            <div class="box-ant">
+                <h2><i class="fas fa-shopping-bag"></i></h2>
+                <h2>Numéro de commande  : {{ commandpassed.command_number}}</h2>
+                <h2>Date de commande : {{ commandpassed.created_at }}</h2>
+                <h2>Prix de la commande : {{ commandpassed.amount }} €</h2>
+            </div>
+        {% endfor %}
+    </div>
     {% endif %}
 
 
 
 
 
-               <!-- <div class="delete-section">
-                    <form action="/menu/delete/{{ loop.index0 }}" method="post">
-                        <button>Suprimer</button>
-                    </form>s
-                </div>-->
+               <!---->
 
 
-            <div class="command-passed">
-                <h1>Mes commandes antérieures</h1>
-                {% for commandpassed in commandspassed %}
-                <div class="box-ant">
-                    <h2><i class="fas fa-shopping-bag"></i></h2>
-                        <h2>Numéro de commande  : {{ commandpassed.command_number}}</h2>
-                        <h2>Date de commande : {{ commandpassed.created_at }}</h2>
-                        <h2>Prix de la commande : {{ commandpassed.amount }} €</h2>
-                </div>
-                {% endfor %}
-            </div>
+
     </div>
 
 </div>

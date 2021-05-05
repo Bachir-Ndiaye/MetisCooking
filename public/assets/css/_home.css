@@ -377,7 +377,7 @@
 
 .container-add-panier {
   padding-top: 4rem;
-  height: max-content;
+  height: 100vw;
   width: 50%;
   margin: auto;
 }
@@ -392,15 +392,6 @@
   font-size: x-large;
   background: var(--black);
   color: var(--light-marron);
-}
-.container-add-panier .serveur {
-  position: absolute;
-  padding-top: 50rem;
-  margin-left: -41rem;
-}
-.container-add-panier .serveur img {
-  height: 600px;
-  height: 600px;
 }
 .container-add-panier .command-passed {
   padding-top: 10rem;
