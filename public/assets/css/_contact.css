@@ -128,12 +128,6 @@ form{
 
   padding: 1.7rem 0 0 .5rem;
 }
-.box-msg .success {
-  background-color: var(--dark-green);
-  padding: 0.25rem 0.5rem;
-  text-align: center;
-  color: var(--white);
-}
 .box-msg .alert {
   background-color: var(--red);
   padding: 0.25rem 0.5rem;
