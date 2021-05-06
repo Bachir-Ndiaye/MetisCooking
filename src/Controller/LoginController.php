@@ -42,8 +42,14 @@ class LoginController extends AbstractController
 
                     $commandManager = new CommandManager();
                     $commands = $commandManager->searchCommands($user['id']);
+                    $dateCommand = '';
 
-                    $dateCommand = (array_slice($commands, -1)[0]["created_at"]);
+                    if ($commands != false) {
+                        $dateCommand = (array_slice($commands, -1)[0]["created_at"]);
+                    } else {
+                        return $this->customRender('Home/index.html.twig', []);
+                    }
+
 
                     $objectDateCommand = date_create($dateCommand);
                     $objectDateNow = date_create();
