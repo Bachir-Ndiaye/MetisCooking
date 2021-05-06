@@ -321,13 +321,15 @@
   padding: 0.25rem 0.85rem;
 }
 .main-menu .top-3 {
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .main-menu .top-3 .top-card {
   display: inline-block;
   max-width: 300px;
   max-height: 500px;
-  padding: 2rem;
+  padding-bottom: 60rem;
   margin: 0 3rem;
 }
 .main-menu .top-3 .top-card p {
