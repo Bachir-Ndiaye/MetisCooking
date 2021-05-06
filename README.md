@@ -54,7 +54,7 @@ $ git remote add origin https://github.com/Bachir-Ndiaye/MetissCooking/ (note th
 $ git remote -v ( to see if the remote was added correctly)
 $ composer install
 ```
-> Create a db.php file to configure connexion to the database and copy paste this line of code for th edb name (copy the db.php.dist and add your credentials) 
+> Create a db.php file to configure connexion to the database and copy paste this line of code for the db name (copy the db.php.dist and add your credentials) 
 
 ```
 define('APP_DB_NAME', 'metiscooking');
@@ -67,7 +67,7 @@ mysql> source mc.sql;
 ```
 > To make test easier we created a default user and admin email and password to log in
 ```
-User eamil : user@metiscooking.fr
+User emil : user@metiscooking.fr
 User password : 1234
 
 Admin email : admin@metiscooking.fr
