@@ -13,7 +13,6 @@ use App\Model\HomeManager;
 
 class HomeController extends AbstractController
 {
-
     public function handlePostEmail($value): void
     {
         $email = trim($value);

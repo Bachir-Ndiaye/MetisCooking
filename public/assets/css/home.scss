@@ -176,7 +176,7 @@
 
   .success{
     background-color: var(--dark-green);
-    padding: .25rem .5rem;
+    padding: .1rem .5rem;
     text-align: center;
     color: var(--white);
     width: max-content;
@@ -184,7 +184,7 @@
   }
   .alert{
     background-color: var(--red);
-    padding: .25rem .5rem;
+    padding: .1rem .5rem;
     text-align: center;
     color: var(--white);
     margin: auto;
@@ -404,7 +404,6 @@
 
 .container-add-panier{
   padding-top : 4rem;
-  height : 100vw;
   width: 50%;
   margin: auto;
   .confirm-command{
@@ -469,4 +468,13 @@
       text-decoration:none;
     }
   }
+}
+
+/*=================
+  NOT FOUND
+=================*/
+.not-found{
+  height: 100vh;
+  padding-top: 150px;
+  text-align: center;
 }

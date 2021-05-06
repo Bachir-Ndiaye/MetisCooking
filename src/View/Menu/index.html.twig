@@ -28,12 +28,14 @@
                     <p> <img src="/assets/images/flags/{{ menu[i].country }}.png" alt=""></p>
                     <p> | {{ menu[i].price }} € | </p>
                     <p> {{ random(1500,5000) }}kcal/100gr | </p>
-                    {% if current_user is defined and status is empty %}
+                    {% if current_user is defined and status is empty and cancommand != 0 %}
                     <a href="/menu/traitement/{{ plats[i].menu }}"><p id="paniers"><i class="fas fa-shopping-cart"></i>+</p></a>
                     {% elseif current_user is not defined %}
                         <p id="paniers" onclick='notConnectetd()'><i class="fas fa-shopping-cart"></i>+</p>
                     {% elseif status is not empty %}
                         <p id="paniers" onclick='hasCommanded()'><i class="fas fa-shopping-cart"></i>+</p>
+                    {% elseif cancommand ==0  %}
+                            <p id="paniers" onclick='cannotCommand()'><i class="fas fa-shopping-cart"></i>+</p>
                     {% endif %}
                 </div>
                 <div class="menu">
@@ -58,7 +60,11 @@
 {% endblock %}
 
 {% block javascript %}
-<script type="text/javascript">function notConnectetd() {
+<script type="text/javascript">
+    function cannotCommand() {
+    alert('Vous devez attendre demain pour commander ! Cordialement');
+}
+    function notConnectetd() {
     alert('Merci de vous connecter ou de vous inscrire pour passer une commande!');
 }
 
