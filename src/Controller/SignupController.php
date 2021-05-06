@@ -19,6 +19,9 @@ class SignupController extends AbstractController
             if (!($this->isEmpty($data))) {
                 $this->errors = "Tous les champs doivent être remplis";
             }
+            if (strlen($_POST['password']) <= 5) {
+                $this->errors = "Le mot de passe est trop court";
+            }
             if (empty($_POST['email'])) {
                 $this->errors = "Veuillez indiquer votre email .";
             } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -29,10 +32,13 @@ class SignupController extends AbstractController
             if (empty($this->errors)) {
                 $signupManager = new SignupManager();
                 $result = $signupManager->insert($firstname, $lastname, $email, $password);
-                if ($result == false) {
+                if ($result === '0') {
                     $this->errors = "Cet email est déjà utilisé";
+                    return $this->customRender('Signup/form.html.twig', [
+                        'errors' => $this->errors
+                    ]);
                 } else {
-                    $this->success = "vous êtes inscrit";
+                    $this->success = "Vous êtes bien inscrit";
 
                     $loginManager = new LoginManager();
                     $user = $loginManager->verifLog($email, $password);
