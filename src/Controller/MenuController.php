@@ -77,7 +77,10 @@ class MenuController extends AbstractController
             ]);
         }
 
-        return $this->customRender('Redirect/index.html.twig', []);
+        $this->errors = "Page not found 404";
+        return $this->customRender('Redirect/index.html.twig', [
+            'errors' => $this->errors
+        ]);
     }
 
     /**
@@ -85,7 +88,7 @@ class MenuController extends AbstractController
      */
     public function traitement()
     {
-        if (isset($_SESSION['current_user'])) {
+        if (isset($_SESSION['current_user']) && ($_SESSION['can-command'] == 1)) {
             $myCommands = [];
             $dishManager = new DishManager();
 
@@ -104,6 +107,11 @@ class MenuController extends AbstractController
             return $this->customRender('Menu/command.html.twig', [
                 'success' => $this->success,
                 'mycommands' => $myCommands
+            ]);
+        } elseif ($_SESSION['can-command'] == 0) {
+            $this->errors = "Vous ne pouvez pas passer de commander avant demain ! ";
+            return $this->customRender('Redirect/index.html.twig', [
+                'errors' => $this->errors
             ]);
         } else {
             $this->errors = "Accès interdit ! Veuillez vous connecter ou vous inscrire";
