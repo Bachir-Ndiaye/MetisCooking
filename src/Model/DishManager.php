@@ -25,7 +25,7 @@ class DishManager extends AbstractManager
         return $this->pdo->query($query)->fetchAll();
     }
 
-    public function selectOneMenu(string $menuName): array
+    public function selectOneMenu(string $menuName)
     {
        // prepared request
         $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE name=:name;");

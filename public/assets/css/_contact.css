@@ -56,7 +56,7 @@
   padding-top: 20px;
 }
 textarea{
-  height: 18px;
+  resize: none;
 }
 .connexion{
   padding-top: 2rem;
@@ -147,10 +147,10 @@ form{
 List contact
 ============*/
 .list-contact{
-  padding-top: 15rem;
+  padding: 15rem 0;
   margin: auto;
-  height: 100vh;
   width: 80%;
+  min-height: 1000px;
 }
 
 .list-contact table{

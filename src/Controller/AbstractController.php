@@ -68,6 +68,11 @@ abstract class AbstractController
         } elseif (!isset($_SESSION['command-status'])) {
             $_SESSION['command-total'] = null;
         }
+        if (isset($_SESSION['can-command'])) {
+            $params['can-command'] = $_SESSION['can-command'];
+        } elseif (!isset($_SESSION['can-command'])) {
+            $_SESSION['can-command'] = 1;
+        }
         return $this->twig->render($template, $params);
     }
 

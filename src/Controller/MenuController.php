@@ -39,6 +39,7 @@ class MenuController extends AbstractController
         $menuManager = new MenuManager();
         $menus = $menuManager->selectAll();
         $status = $_SESSION['command-status'];
+        $canCommand = $_SESSION['can-command'];
         return $this->customRender('Menu/index.html.twig', [
             'dish' => $dishes,
             'cooker' => $cookers,
@@ -46,37 +47,39 @@ class MenuController extends AbstractController
             'entrees' => $entrees,
             'plats' => $plats,
             'desserts' => $desserts,
-            'status' => $status
+            'status' => $status,
+            'cancommand' => $canCommand
         ]);
     }
 
 
-    public function singlemenu(): string
+    public function singlemenu(string $menuName): string
     {
-
         $dishManager = new DishManager();
 
         $entree = 'entree_id';
         $plat = 'plat_id';
         $dessert = 'dessert_id';
 
-        //Url traitement
-        $exploseUrl = (explode('/', $_SERVER['REQUEST_URI'])[3]);
-        $format = rawurldecode($exploseUrl);
-
         //One single menu fetch
-        $singleMenu = $dishManager->selectOneMenu($format);
+        $singleMenu = $dishManager->selectOneMenu(rawurldecode($menuName));
 
-        $entrees = $dishManager->selectOneDish(intval($singleMenu[$entree]));
-        $plats = $dishManager->selectOneDish(intval($singleMenu[$plat]));
-        $desserts = $dishManager->selectOneDish(intval($singleMenu[$dessert]));
+        if ($singleMenu != false) {
+            $entrees = $dishManager->selectOneDish(intval($singleMenu[$entree]));
+            $plats = $dishManager->selectOneDish(intval($singleMenu[$plat]));
+            $desserts = $dishManager->selectOneDish(intval($singleMenu[$dessert]));
 
-        return $this->customRender('Menu/singlemenu.html.twig', [
-            'menu' => $singleMenu,
-            'entrees' => $entrees,
-            'plats' => $plats,
-            'desserts' => $desserts
+            return $this->customRender('Menu/singlemenu.html.twig', [
+                'menu' => $singleMenu,
+                'entrees' => $entrees,
+                'plats' => $plats,
+                'desserts' => $desserts
+            ]);
+        }
 
+        $this->errors = "Page not found 404";
+        return $this->customRender('Redirect/index.html.twig', [
+            'errors' => $this->errors
         ]);
     }
 
@@ -85,7 +88,7 @@ class MenuController extends AbstractController
      */
     public function traitement()
     {
-        if (isset($_SESSION['current_user'])) {
+        if (isset($_SESSION['current_user']) && ($_SESSION['can-command'] == 1)) {
             $myCommands = [];
             $dishManager = new DishManager();
 
@@ -104,6 +107,11 @@ class MenuController extends AbstractController
             return $this->customRender('Menu/command.html.twig', [
                 'success' => $this->success,
                 'mycommands' => $myCommands
+            ]);
+        } elseif ($_SESSION['can-command'] == 0) {
+            $this->errors = "Vous ne pouvez pas passer de commander avant demain ! ";
+            return $this->customRender('Redirect/index.html.twig', [
+                'errors' => $this->errors
             ]);
         } else {
             $this->errors = "Accès interdit ! Veuillez vous connecter ou vous inscrire";

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\CommandManager;
 use App\Model\LoginManager;
 
 use function Amp\Iterator\filter;
@@ -16,6 +17,7 @@ class LoginController extends AbstractController
 
     public function login(): string
     {
+
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $data = array_map('trim', $_POST);
             $email = htmlentities($data['email']);
@@ -31,18 +33,33 @@ class LoginController extends AbstractController
 
             if (empty($this->errors)) {
                 $loginManager = new LoginManager();
-
-                // $user = $verif
                 $user = $loginManager->verifLog($email, $password);
                 if ($user === -1) {
                     $this->errors = " Identifiants incorrects ! Veuillez-vous inscrire";
                 } else {
                     $this->success = "Vous êtes connecté";
-
                     $_SESSION['current_user'] = $user;
-                    header('Location : home/index');
 
-                        // Default User
+                    $commandManager = new CommandManager();
+                    $commands = $commandManager->searchCommands($user['id']);
+
+                    $dateCommand = (array_slice($commands, -1)[0]["created_at"]);
+
+                    $objectDateCommand = date_create($dateCommand);
+                    $objectDateNow = date_create();
+
+                    $dateDiff = date_diff($objectDateCommand, $objectDateNow);
+                    $dateDiffFormated = intval($dateDiff->format('%d'));
+
+                    if ($dateDiffFormated > 0) {
+                        $this->errors = "Vous devez attendre demain pour commander ";
+                        $_SESSION['can-command'] = 0;
+                        return $this->customRender('Home/index.html.twig', [
+                            'errors' => $this->errors
+                        ]);
+                    }
+
+                    header('Location : home/index');
                         return $this->customRender('Home/index.html.twig', [
                             'success' => $this->success
                         ]);

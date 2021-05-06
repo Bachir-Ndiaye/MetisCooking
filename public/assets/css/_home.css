@@ -173,7 +173,7 @@
 }
 .box-msg .success {
   background-color: var(--dark-green);
-  padding: 0.25rem 0.5rem;
+  padding: 0.1rem 0.5rem;
   text-align: center;
   color: var(--white);
   width: max-content;
@@ -181,7 +181,7 @@
 }
 .box-msg .alert {
   background-color: var(--red);
-  padding: 0.25rem 0.5rem;
+  padding: 0.1rem 0.5rem;
   text-align: center;
   color: var(--white);
   margin: auto;
@@ -379,7 +379,6 @@
 
 .container-add-panier {
   padding-top: 4rem;
-  height: 100vw;
   width: 50%;
   margin: auto;
 }
@@ -439,6 +438,15 @@
 }
 .admin .links a {
   text-decoration: none;
+}
+
+/*=================
+  NOT FOUND
+=================*/
+.not-found {
+  height: 100vh;
+  padding-top: 150px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=_home.css.map */
