@@ -27,7 +27,7 @@
             {% for command in commands %}
 
                 <tr>
-                    <td>{{ command.id ~ users[loop.index0].lastname}}</td>
+                    <td>{{ command.command_number}}</td>
                     <td>{{ users[loop.index0].email }}</td>
                     <td>{{ users[loop.index0].firstname }}</td>
                     <td>{{ users[loop.index0].id }}</td>

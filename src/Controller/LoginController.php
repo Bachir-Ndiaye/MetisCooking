@@ -11,11 +11,7 @@ class LoginController extends AbstractController
     public function destroy()
     {
         $this->destroySession();
-        $success = 'Vous êtes bien deconnecté';
-
-        return $this->twig->render('Home/index.html.twig', [
-            'session_destroy' => $success
-        ]);
+        header("Location:/Home/index");
     }
 
     public function login(): string
