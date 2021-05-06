@@ -29,10 +29,14 @@ class SignupController extends AbstractController
             if (empty($this->errors)) {
                 $signupManager = new SignupManager();
                 $result = $signupManager->insert($firstname, $lastname, $email, $password);
-                if ($result == false) {
+                var_dump($result);
+                if ($result === '0') {
                     $this->errors = "Cet email est déjà utilisé";
+                    return $this->customRender('Signup/form.html.twig', [
+                        'errors' => $this->errors
+                    ]);
                 } else {
-                    $this->success = "vous êtes inscrit";
+                    $this->success = "Vous êtes bien inscrit";
 
                     $loginManager = new LoginManager();
                     $user = $loginManager->verifLog($email, $password);
