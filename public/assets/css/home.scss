@@ -314,12 +314,22 @@
     }
   }
   .order{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    .command-button{
+      text-align: center;
+      background-color: var(--black);
+      color: var(--white);
+      padding: 0.55rem 0.85rem;
+      height: min-content;
+      h1{
+        color: var(--white);
+        margin: auto;
+      }
+    }
     .number-order{
-      display: flex;
-      justify-content: center;
       padding-bottom: 4rem;
-      width: 80%;
-      margin:auto;
       #menu-price{
         background-color: var(--dark-marron);
         color: var(--white);

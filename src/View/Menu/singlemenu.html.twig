@@ -9,11 +9,12 @@
          <div class="back-menu">
              <a href="/menu/cookers"><i class='fas fa-reply'></i></a>
          </div>
-
          <div class="order">
-
              <div class="number-order">
                  <p id="menu-price">Ce menu est à : {{menu.price}} €</p>
+             </div>
+             <div class="command-button">
+                 <a href="/menu/traitement/{{ menu.name }}"><h1>Commandez <span><i class="fas fa-plus"></i></span></h1></a>
              </div>
          </div>
          <div class="singlemenu">
@@ -44,5 +45,6 @@
              </div>
 
          </div>
+
      </div>
 {% endblock %}

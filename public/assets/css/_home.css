@@ -297,12 +297,24 @@
   background-color: var(--light-marron);
   color: var(--black);
 }
-.main-menu .order .number-order {
+.main-menu .order {
   display: flex;
   justify-content: center;
-  padding-bottom: 4rem;
-  width: 80%;
+  justify-content: space-evenly;
+}
+.main-menu .order .command-button {
+  text-align: center;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 0.55rem 0.85rem;
+  height: min-content;
+}
+.main-menu .order .command-button h1 {
+  color: var(--white);
   margin: auto;
+}
+.main-menu .order .number-order {
+  padding-bottom: 4rem;
 }
 .main-menu .order .number-order #menu-price {
   background-color: var(--dark-marron);
