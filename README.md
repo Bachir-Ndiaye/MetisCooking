@@ -84,16 +84,8 @@ $ git commit -m "a detailed message of what you have done or features added"
 $ git push -u origin your_branch_name
 
 ```
-## Update your work from distant repo ?
 
-```
-$ git fetch origin
-$ git merge origin/branch_name 
-
-```
 One of the collaborators will validate your Pull Request if it's okay for us.
-
-
 
 
 
