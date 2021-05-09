@@ -57,7 +57,8 @@ class LoginController extends AbstractController
                     $dateDiff = date_diff($objectDateCommand, $objectDateNow);
                     $dateDiffFormated = intval($dateDiff->format('%d'));
 
-                    if ($dateDiffFormated > 0) {
+
+                    if ($dateDiffFormated < 1) {
                         $this->errors = "Vous devez attendre demain pour commander ";
                         $_SESSION['can-command'] = 0;
                         return $this->customRender('Home/index.html.twig', [

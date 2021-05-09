@@ -14,7 +14,11 @@
                  <p id="menu-price">Ce menu est à : {{menu.price}} €</p>
              </div>
              <div class="command-button">
+                 {% if cancommand !=0 %}
                  <a href="/menu/traitement/{{ menu.name }}"><h1>Commandez <span><i class="fas fa-plus"></i></span></h1></a>
+                 {% else %}
+                     <a href="/menu/traitement/{{ menu.name }}" onclick="cannotCommand()"><h1>Commandez <span><i class="fas fa-plus"></i></span></h1></a>
+                 {% endif %}
              </div>
          </div>
          <div class="singlemenu">
@@ -22,21 +26,21 @@
              <!--Top 3 ideas -->
              <div class="top-3">
                  <div class="top-card">
-                     <img src="/assets/images/dishdatabase/entrees/{{ entrees.image_link }}.jpg" alt="">
+                     <img src="/assets/images/dishdatabase/entrees/{{ entrees.image_link }}.jpg" alt="" loading="lazy">
                      <div class="box-category">
                          <h1>{{ entrees.name }}</h1>
                          <p>{{ entrees.description }}</p>
                      </div>
                  </div>
                  <div class="top-card">
-                     <img src="/assets/images/dishdatabase/plats/{{ plats.image_link }}.jpg" alt="">
+                     <img src="/assets/images/dishdatabase/plats/{{ plats.image_link }}.jpg" alt="" loading="lazy">
                      <div class="box-category">
                          <h1>{{ plats.name }}</h1>
                          <p>{{ plats.description }}</p>
                      </div>
                  </div>
                  <div class="top-card">
-                     <img src="/assets/images/dishdatabase/desserts/{{ desserts.image_link }}.jpg" alt="">
+                     <img src="/assets/images/dishdatabase/desserts/{{ desserts.image_link }}.jpg" alt="" loading="lazy">
                      <div class="box-category">
                          <h1>{{ desserts.name }}</h1>
                          <p>{{desserts.description}}</p>
@@ -48,3 +52,4 @@
 
      </div>
 {% endblock %}
+

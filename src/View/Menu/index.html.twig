@@ -25,7 +25,7 @@
         <h1>{{ plats[i].cooker }}</h1>
                 <div class="details-menu">
                     <a href="/menu/singlemenu/{{plats[i].menu}}"><p>{{ plats[i].menu}}</p></a>
-                    <p> <img src="/assets/images/flags/{{ menu[i].country }}.png" alt=""></p>
+                    <p> <img src="/assets/images/flags/{{ menu[i].country }}.png" alt="" loading="lazy"></p>
                     <p> | {{ menu[i].price }} € | </p>
                     <p> {{ random(1500,5000) }}kcal/100gr | </p>
                     {% if current_user is defined and status is empty and cancommand != 0 %}
@@ -40,15 +40,15 @@
                 </div>
                 <div class="menu">
                     <div class="menu-wrap">
-                        <a href="/menu/singlemenu/{{plats[i].menu}}"><img src="/assets/images/dishdatabase/entrees/{{ entrees[i].link }}.jpg" alt=""></a>
+                        <a href="/menu/singlemenu/{{plats[i].menu}}"><img src="/assets/images/dishdatabase/entrees/{{ entrees[i].link }}.jpg" alt="" loading="lazy"></a>
                         <p>{{ entrees[i].dish }}</p>
                     </div>
                     <div class="menu-wrap">
-                        <a href="/menu/singlemenu/{{plats[i].menu}}"><img src="/assets/images/dishdatabase/plats/{{ plats[i].link }}.jpg" alt=""></a>
+                        <a href="/menu/singlemenu/{{plats[i].menu}}"><img src="/assets/images/dishdatabase/plats/{{ plats[i].link }}.jpg" alt="" loading="lazy"></a>
                         <p>{{ plats[i].dish }}</p>
                     </div>
                     <div class="menu-wrap">
-                        <a href="/menu/singlemenu/{{plats[i].menu}}"><img src="/assets/images/dishdatabase/desserts/{{ desserts[i].link }}.jpg" alt=""></a>
+                        <a href="/menu/singlemenu/{{plats[i].menu}}"><img src="/assets/images/dishdatabase/desserts/{{ desserts[i].link }}.jpg" alt="" loading="lazy"></a>
                         <p>{{ desserts[i].dish }}</p>
                     </div>
                     

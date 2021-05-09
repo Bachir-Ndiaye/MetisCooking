@@ -149,7 +149,6 @@ List contact
 .list-contact{
   padding: 15rem 0;
   margin: auto;
-  height: 100vh;
   width: 80%;
   min-height: 1000px;
 }

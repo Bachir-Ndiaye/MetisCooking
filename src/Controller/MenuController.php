@@ -69,11 +69,13 @@ class MenuController extends AbstractController
             $plats = $dishManager->selectOneDish(intval($singleMenu[$plat]));
             $desserts = $dishManager->selectOneDish(intval($singleMenu[$dessert]));
 
+            $canCommand = $_SESSION['can-command'];
             return $this->customRender('Menu/singlemenu.html.twig', [
                 'menu' => $singleMenu,
                 'entrees' => $entrees,
                 'plats' => $plats,
-                'desserts' => $desserts
+                'desserts' => $desserts,
+                'cancommand' => $canCommand
             ]);
         }
 
