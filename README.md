@@ -35,13 +35,12 @@ Our goal at the end of the project will be to have :
   <a href="https://cssbattle.dev/player/amadou"><img src="https://img.icons8.com/color/48/000000/mysql-logo.png" width="70"/></a>
   <a href="https://cssbattle.dev/player/amadou"><img src="https://www.php.net/images/logos/new-php-logo.png" width="70"/></a>
   
-    <h1> TOOLS </h1>
+   <h1> TOOLS </h1>
 <a href="https://cssbattle.dev/player/amadou"><img src="https://img.icons8.com/material-outlined/48/000000/github.png" width="70"/></a>
 <a href="https://cssbattle.dev/player/amadou"><img src="https://img.icons8.com/color/48/000000/git.png" width="70"/></a> 
 <a href="https://cssbattle.dev/player/amadou"><img src="https://img.icons8.com/color/48/000000/intellij-idea.png" width="70"/></a> 
 <a href="https://cssbattle.dev/player/amadou"><img src="https://img.icons8.com/color/48/000000/visual-studio.png" width="70"/></a>
 <a href="https://cssbattle.dev/player/amadou"><img src="https://img.icons8.com/color/48/000000/console.png" width="70"/></a> 
-<a href="https://cssbattle.dev/player/amadou"><img src="https://lh3.googleusercontent.com/proxy/5jw3IAMpKO4mIGZnyVMibS9-Cwwl_9DsGtL7RhB16q1TJSc14uNLD78Z6YkwFX7RA89HH54zZvBI179me3r8B-UNsTDoWZPPGZ07I3XVdmFMmetRsWHzKNg" width="70"/></a>
 <a href="https://cssbattle.dev/player/amadou"><img src="https://twig.symfony.com/images/logo.png" width="70"/></a>
 
 </div>
